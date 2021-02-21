@@ -16,13 +16,13 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js'],
   },
   devServer: {
     port: 4100,
     hot: isDev,
     liveReload: isDev,
-    inline: true
+    inline: true,
   },
   devtool: isDev ? 'source-map' : false,
   plugins: [
@@ -33,7 +33,7 @@ module.exports = {
         collapseWhitespace: isProd,
       },
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
   ],
   module: {
     rules: [
@@ -44,13 +44,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: [
-              '@babel/plugin-proposal-class-properties'
-            ]
-          }
-        }
+            plugins: ['@babel/plugin-proposal-class-properties'],
+          },
+        },
       },
     ],
   },
-}
-
+};
