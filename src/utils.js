@@ -1,7 +1,8 @@
-export const searchMovies = (value, movies) => movies.filter((movie) => movie.title.toLowerCase().includes(value.toLowerCase()));
+export const searchMovies = (value, movies) => movies.filter(({title}) => 
+title.toLowerCase().includes(value.toLowerCase()));
 
 export const filterMovies = (filter, movies) => {
-  if (filter === 'all') {
+   if (filter === 'all') {
     return movies;
   } else {
     return movies.filter(({genre}) => genre.includes(filter));

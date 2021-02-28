@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import MoviesList from './components/MoviesList/MoviesList';
-import MoviesStatistic from './components/MoviesStatistic/MoviesStatistic';
 import Footer from './components/Footer/Footer';
 import MainHeader from './components/MainHeader/MainHeader';
 import MovieFilters from './components/MovieFilters/MovieFilters';
-import {filterMovies, searchMovies, sortMovies} from './utils';
+import MoviesList from './components/MoviesList/MoviesList';
+import MoviesStatistic from './components/MoviesStatistic/MoviesStatistic';
 import MoviesSorting from './components/MoviesSorting/MoviesSorting';
+import {filterMovies, searchMovies, sortMovies} from './utils';
 import {mockedData} from './mockedData';
 import './App.scss';
 

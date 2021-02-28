@@ -4,16 +4,10 @@ import {mockedData} from '../../mockedData';
 import './MovieFilters.scss';
 
 const MovieFilters = ({setMovieFilter, movieFilter}) => {
-  const filters = [
-    ...new Set(
-      mockedData
+  const filters = [...new Set(mockedData
         .reduce((acc, current) => [...acc, current.genre.split(',')], [])
         .flat(Infinity)
-        .map((el) => el.trim())
-    ),
-  ].map((elem) => ({
-    title: elem,
-  }));
+        .map((el) => el.trim()))].map((elem) => ({title: elem}));
 
   return (
     <ul className="filters">
