@@ -1,0 +1,35 @@
+$mainBackgroundColor: #232323;
+$mainColor: #ffffff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $mainBackgroundColor;
+  color: $mainColor;
+  font-family: 'Orienta', sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header-content {
+  height: 300px;
+}
+
+.main-content {
+  min-height: calc(100vh - 340px);
+
+  .sort-and-filters {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.footer-content {
+  height: 40px;
+}
