@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from 'rc-dropdown';
 import Menu, {Item as MenuItem} from 'rc-menu';
-import {typeOfSorting} from '../../utils';
+import { typeOfSorting } from '../../constants';
 import PropTypes from 'prop-types';
 import 'rc-dropdown/assets/index.css';
 import './MoviesSorting.scss';
@@ -13,10 +13,7 @@ const MoviesSorting = ({setTypeSorting, typeSorting}) => {
 
   const menu = (
     <Menu onSelect={onSelect}>
-      <MenuItem key="newToOld">Release date: from new</MenuItem>
-      <MenuItem key="oldToNew">Release date: from old</MenuItem>
-      <MenuItem key="aToZ">A to Z</MenuItem>
-      <MenuItem key="zToA">Z to A</MenuItem>
+      {Object.entries(typeOfSorting).map(([key, value]) => <MenuItem key={key}>{value}</MenuItem>)}
     </Menu>
   );
 

@@ -6,8 +6,7 @@ import './MovieCard.scss';
 const MovieCard = ({img, title, releaseDate, genre}) => {
   const [isMovieCardWithHover, setIsMovieCardWithHover] = useState(false);
 
-  const iconClass = classnames({
-    'dots-icon': true,
+  const iconClass = classnames('dots-icon', {
     'dots-icon-hidden': !isMovieCardWithHover,
   });
 

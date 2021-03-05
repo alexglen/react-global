@@ -4,14 +4,15 @@ import {mockedData} from '../../mockedData';
 import './MovieFilters.scss';
 
 const MovieFilters = ({setMovieFilter, movieFilter}) => {
-  const filters = [...new Set(mockedData
-        .reduce((acc, current) => [...acc, current.genre.split(',')], [])
-        .flat(Infinity)
-        .map((el) => el.trim()))].map((elem) => ({title: elem}));
+  const splitData = data => data.reduce((acc, current) => [...acc, ...current.genre.split(', ')], []);
+
+  const filters = [...new Set(splitData(mockedData).flat(Infinity).map(el => el.trim()))];
+  
+  const movieFilters = [{title: 'all'}, ...filters.map(filter => ({title: filter}))]
 
   return (
     <ul className="filters">
-      {[{title: 'all'}, ...filters].map(({title}) => (
+      {movieFilters.map(({title}) => (
         <li key={title} className={title === movieFilter ? 'active' : ''} onClick={() => setMovieFilter(title)}>
           {title}
         </li>

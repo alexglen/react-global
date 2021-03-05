@@ -5,14 +5,17 @@ import MovieFilters from './components/MovieFilters/MovieFilters';
 import MoviesList from './components/MoviesList/MoviesList';
 import MoviesStatistic from './components/MoviesStatistic/MoviesStatistic';
 import MoviesSorting from './components/MoviesSorting/MoviesSorting';
-import {filterMovies, searchMovies, sortMovies} from './utils';
 import {mockedData} from './mockedData';
+import { searchMovies } from './utils/searchMovies';
+import { filterMovies } from './utils/filterMovies';
+import { sortMovies } from './utils/sortMovies';
+import { ALL,  newToOld } from './constants';
 import './App.scss';
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [movieFilter, setMovieFilter] = useState('all');
-  const [typeSorting, setTypeSorting] = useState('newToOld');
+  const [movieFilter, setMovieFilter] = useState(ALL);
+  const [typeSorting, setTypeSorting] = useState(newToOld);
 
   const moviesAfterSearching = searchMovies(searchValue, mockedData);
   const moviesAfterFilter = filterMovies(movieFilter, moviesAfterSearching);
