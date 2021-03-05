@@ -1,0 +1,27 @@
+.main-header {
+  background-image: url('./assets/header-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+
+    .add-button button {
+      height: 40px;
+      width: 140px;
+      text-transform: uppercase;
+      color: #f65261;
+      background-color: #555555;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}

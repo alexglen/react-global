@@ -1,0 +1,20 @@
+.filters {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  text-transform: uppercase;
+  li {
+    list-style: none;
+    cursor: pointer;
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+    &:hover {
+      color: #f65261;
+    }
+  }
+  .active {
+    text-decoration: underline;
+    text-decoration-color: #f65261;
+  }
+}

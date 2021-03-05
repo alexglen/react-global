@@ -1,0 +1,41 @@
+.movie {
+  width: 30%;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 30px;
+
+  &-img {
+    img {
+      width: 100%;
+    }
+  }
+  &-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-year {
+      border: 1px solid #ffffff;
+      padding: 3px 12px;
+      border-radius: 5px;
+    }
+  }
+  &-genre {
+    margin: 0;
+    font-size: 0.75em;
+    font-weight: 300;
+  }
+  .dots-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #232323;
+    background-image: radial-gradient(circle, #ffffff 2px, transparent 2px);
+    background-size: 100% 33.33%;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border-radius: 50%;
+    &-hidden {
+      display: none;
+    }
+  }
+}
