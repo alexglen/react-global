@@ -1,0 +1,53 @@
+.modal {
+  width: 40%;
+  margin: 0 auto;
+  background-color: #232323;
+  position: relative;
+
+  .close {
+    cursor: pointer;
+    padding: 10px 35px 25px 10px;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      left: 20px;
+      content: " ";
+      height: 24px;
+      width: 2px;
+      background-color: #ffffff;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px 0;
+    .title {
+      text-transform: uppercase;
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 15px;
+      .reset-button {
+        margin-right: 10px;
+      }
+    }
+  }
+}

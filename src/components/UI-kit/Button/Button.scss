@@ -1,0 +1,30 @@
+.button {
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 35px;
+}
+
+.button-primary {
+  background-color: #f65261;
+  color: #ffffff;
+  &:hover {
+    background-color: #e43745;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem #d87880;
+  }
+}
+
+.button-secondary {
+  background-color: inherit;
+  color: #f65261;
+  border: 1px solid #f65261;
+  &:hover {
+    background-color: #f65261;
+    color: #ffffff;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem #d87880;
+  }
+}

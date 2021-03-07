@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { getGenres } from '../../utils/getGenres';
 import {mockedData} from '../../mockedData';
+import PropTypes from 'prop-types';
 import './MovieFilters.scss';
 
 const MovieFilters = ({setMovieFilter, movieFilter}) => {
-  const splitData = data => data.reduce((acc, current) => [...acc, ...current.genre.split(', ')], []);
-
-  const filters = [...new Set(splitData(mockedData).flat(Infinity).map(el => el.trim()))];
-  
+  const filters = getGenres(mockedData);
   const movieFilters = [{title: 'all'}, ...filters.map(filter => ({title: filter}))]
 
   return (

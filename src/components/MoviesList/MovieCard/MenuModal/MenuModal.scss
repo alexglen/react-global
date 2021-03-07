@@ -1,0 +1,49 @@
+.menu-modal {
+  width: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #232323;
+  border-radius: 5px;
+
+  ul {
+    margin-top: 30px;
+    li {
+      list-style: none;
+      padding: 8px;
+      margin: 7px 0;
+      &:hover {
+        background-color: #f65261;
+      }
+    }
+  }
+
+  .close {
+    cursor: pointer;
+    position: absolute;
+    right: 12px;
+    top: 5px;
+    padding: 5px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: " ";
+      height: 14px;
+      width: 2px;
+      background-color: #ffffff;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}

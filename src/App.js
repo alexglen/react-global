@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
-import Footer from './components/Footer/Footer';
-import MainHeader from './components/MainHeader/MainHeader';
-import MovieFilters from './components/MovieFilters/MovieFilters';
-import MoviesList from './components/MoviesList/MoviesList';
-import MoviesStatistic from './components/MoviesStatistic/MoviesStatistic';
-import MoviesSorting from './components/MoviesSorting/MoviesSorting';
-import {mockedData} from './mockedData';
-import { searchMovies } from './utils/searchMovies';
-import { filterMovies } from './utils/filterMovies';
-import { sortMovies } from './utils/sortMovies';
-import { ALL,  newToOld } from './constants';
-import './App.scss';
+import React, { useState } from "react";
+import Footer from "./components/Footer/Footer";
+import MainHeader from "./components/MainHeader/MainHeader";
+import MovieFilters from "./components/MovieFilters/MovieFilters";
+import MoviesList from "./components/MoviesList/MoviesList";
+import MoviesStatistic from "./components/MoviesStatistic/MoviesStatistic";
+import MoviesSorting from "./components/MoviesSorting/MoviesSorting";
+import AddMovieModal from "./components/Modals/AddMovieModal/AddMovieModal";
+import DeleteMovieModal from "./components/Modals/DeleteMovieModal/DeleteMovieModal";
+import { mockedData } from "./mockedData";
+import { searchMovies } from "./utils/searchMovies";
+import { filterMovies } from "./utils/filterMovies";
+import { sortMovies } from "./utils/sortMovies";
+import { ALL, newToOld } from "./constants";
+import "./App.scss";
 
 const App = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const [movieFilter, setMovieFilter] = useState(ALL);
   const [typeSorting, setTypeSorting] = useState(newToOld);
 
@@ -24,12 +26,20 @@ const App = () => {
   return (
     <>
       <header className="header-content">
-        <MainHeader setSearchValue={setSearchValue} />
+        <MainHeader
+          setSearchValue={setSearchValue}
+        />
       </header>
       <main className="main-content container">
         <div className="sort-and-filters">
-          <MovieFilters setMovieFilter={setMovieFilter} movieFilter={movieFilter} />
-          <MoviesSorting setTypeSorting={setTypeSorting} typeSorting={typeSorting} />
+          <MovieFilters
+            setMovieFilter={setMovieFilter}
+            movieFilter={movieFilter}
+          />
+          <MoviesSorting
+            setTypeSorting={setTypeSorting}
+            typeSorting={typeSorting}
+          />
         </div>
 
         <MoviesStatistic moviesNumber={moviesAfterSorting.length} />
@@ -38,6 +48,8 @@ const App = () => {
       <footer className="footer-content">
         <Footer />
       </footer>
+      <AddMovieModal/>
+      <DeleteMovieModal />
     </>
   );
 };
