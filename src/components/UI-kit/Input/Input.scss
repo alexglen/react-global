@@ -10,6 +10,19 @@ $backgroundColor: #424242;
     background-color: $backgroundColor;
     color: $primaryColor;
     width: 100%;
+    padding-left: 3px;
+    &::-webkit-input-placeholder {
+      padding-left: 3px;
+    }
+    &::-moz-placeholder {
+      padding-left: 3px;
+    } /* Firefox 19+ */
+    &:-moz-placeholder {
+      padding-left: 3px;
+    } /* Firefox 18- */
+    &:-ms-input-placeholder {
+      padding-left: 3px;
+    }
   }
   label {
     span {

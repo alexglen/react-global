@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { StatusModalsContext } from '../../../../context/StatusModalsContext';
 import { EDIT } from '../../../../constants';
 import PropTypes from 'prop-types';
-import './MenuModal.scss';
+import './MenuMovieCard.scss';
 
-const MenuModal = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => {
+const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => {
   const { setIsDeleteModalOpen, setIsCardModalOpen, setIdChosenCard, setTypeOfEvent } = useContext(
     StatusModalsContext
   );
@@ -35,10 +35,10 @@ const MenuModal = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => {
   return menu;
 };
 
-MenuModal.propTypes = {
+MenuMovieCard.propTypes = {
   isMenuModalOpen: PropTypes.bool,
   setIsMenuModalOpen: PropTypes.func,
   movieCardId: PropTypes.string,
 };
 
-export default MenuModal;
+export default MenuMovieCard;

@@ -1,33 +1,32 @@
-import React, { useState } from "react";
-import MenuModal from "./MenuModal/MenuModal";
-import classnames from "classnames";
-import PropTypes from "prop-types";
-import "./MovieCard.scss";
+import React, { useState } from 'react';
+import MenuMovieCard from './MenuMovieCard/MenuMovieCard';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import './MovieCard.scss';
 
 const MovieCard = ({ img, title, releaseDate, genre, id }) => {
   const [isMovieCardWithHover, setIsMovieCardWithHover] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
-  const iconClass = classnames("dots-icon", {
-    "dots-icon-hidden": !isMovieCardWithHover
+  const iconClass = classnames('dots-icon', {
+    'dots-icon-hidden': !isMovieCardWithHover,
   });
 
   return (
     <div
-      className="movie"
+      className='movie'
       onMouseEnter={() => setIsMovieCardWithHover(true)}
-      onMouseLeave={() => setIsMovieCardWithHover(false)}
-    >
-      <div className="movie-img">
+      onMouseLeave={() => setIsMovieCardWithHover(false)}>
+      <div className='movie-img'>
         <img src={img} alt={title} />
       </div>
-      <div className="movie-info">
+      <div className='movie-info'>
         <p>{title}</p>
-        <p className="movie-info-year">{releaseDate}</p>
+        <p className='movie-info-year'>{releaseDate}</p>
       </div>
-      <p className="movie-genre">{genre}</p>
+      <p className='movie-genre'>{genre}</p>
       <div className={iconClass} onClick={() => setIsMenuModalOpen(true)}></div>
-      <MenuModal
+      <MenuMovieCard
         isMenuModalOpen={isMenuModalOpen}
         setIsMenuModalOpen={setIsMenuModalOpen}
         movieCardId={id}
@@ -41,7 +40,7 @@ MovieCard.propTypes = {
   title: PropTypes.string,
   releaseDate: PropTypes.number,
   genre: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
 };
 
 export default MovieCard;
