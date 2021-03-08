@@ -1,13 +1,11 @@
-$primaryColor: #ffffff;
-$secondaryColor: #f65261;
-$backgroundColor: #424242;
+@import '../../colors';
 
 .input-component {
   margin: 10px 0;
   input {
     height: 36px;
     border-radius: 5px;
-    background-color: $backgroundColor;
+    background-color: $backgroundInputColor;
     color: $primaryColor;
     width: 100%;
     padding-left: 3px;

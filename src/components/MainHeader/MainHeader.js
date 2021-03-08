@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Logo from '../Logo/Logo';
 import Search from './Search/Search';
 import { StatusModalsContext } from '../../context/StatusModalsContext';
-import { ADD } from './../../constants';
+import { typeAdd } from './../../constants';
 import PropTypes from 'prop-types';
 import './MainHeader.scss';
 
@@ -11,7 +11,7 @@ const MainHeader = ({ setSearchValue }) => {
 
   const openAddMovieModal = () => {
     setIsCardModalOpen(true);
-    setTypeOfEvent(ADD);
+    setTypeOfEvent(typeAdd);
   };
 
   return (

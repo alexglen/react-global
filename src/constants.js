@@ -1,6 +1,6 @@
-export const ALL = 'all';
-export const EDIT = 'edit';
-export const ADD = 'add';
+export const allMovies = 'all';
+export const typeEdit = 'edit';
+export const typeAdd = 'add';
 
 export const oldToNew = 'oldToNew';
 export const newToOld = 'newToOld';

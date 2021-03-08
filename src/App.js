@@ -11,12 +11,12 @@ import { mockedData } from './mockedData';
 import { searchMovies } from './utils/searchMovies';
 import { filterMovies } from './utils/filterMovies';
 import { sortMovies } from './utils/sortMovies';
-import { ALL, newToOld } from './constants';
+import { allMovies, newToOld } from './constants';
 import './App.scss';
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [movieFilter, setMovieFilter] = useState(ALL);
+  const [movieFilter, setMovieFilter] = useState(allMovies);
   const [typeSorting, setTypeSorting] = useState(newToOld);
 
   const moviesAfterSearching = searchMovies(searchValue, mockedData);

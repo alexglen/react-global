@@ -6,7 +6,7 @@ import Input from '../../UI-kit/Input/Input';
 import Select from '../../UI-kit/Select/Select';
 import { mockedData } from '../../../mockedData';
 import { getGenres } from '../../../utils/getGenres';
-import { ADD, EDIT } from '../../../constants';
+import { typeAdd, typeEdit } from '../../../constants';
 import './CardMovieModal.scss';
 
 const CardMovieModal = () => {
@@ -20,12 +20,21 @@ const CardMovieModal = () => {
 
   const activeCard = mockedData.find((card) => card.id === idChosenCard);
 
+  const resetedState = {
+    title: '',
+    release_date: '',
+    url: '',
+    genre: '',
+    overview: '',
+    runtime: '',
+  };
+
   const initialState = useMemo(
     () => ({
-      title: typeOfEvent === EDIT ? activeCard?.title : '',
-      release_date: typeOfEvent === EDIT ? activeCard.releaseDate : '',
+      title: typeOfEvent === typeEdit ? activeCard?.title : '',
+      release_date: typeOfEvent === typeEdit ? activeCard.releaseDate : '',
       url: '',
-      genre: typeOfEvent === EDIT ? activeCard.genre.split(', ')[0] : '',
+      genre: typeOfEvent === typeEdit ? activeCard.genre.split(', ')[0] : '',
       overview: '',
       runtime: '',
     }),
@@ -57,14 +66,7 @@ const CardMovieModal = () => {
 
   const handleReset = useCallback((event) => {
     event.preventDefault();
-    setState({
-      title: '',
-      release_date: '',
-      url: '',
-      genre: '',
-      overview: '',
-      runtime: '',
-    });
+    setState(resetedState);
   }, []);
 
   const closeModal = useCallback(() => {
@@ -86,11 +88,11 @@ const CardMovieModal = () => {
       onRequestClose={closeModal}
       contentLabel='Example Modal'
       ariaHideApp={false}
-      className={'modal'}>
+      className='modal'>
       <>
         <div className='close' onClick={closeModal} />
         <div className='container'>
-          <h1 className='title'>{typeOfEvent === ADD ? 'Add movie' : 'Edit movie'}</h1>
+          <h1 className='title'>{typeOfEvent === typeAdd ? 'Add movie' : 'Edit movie'}</h1>
           <form className='inputs' onSubmit={handleSubmit}>
             <Input
               placeholder='Movie title'
@@ -146,15 +148,9 @@ const CardMovieModal = () => {
                 </Button>
               </div>
               <div>
-                {typeOfEvent === EDIT ? (
                   <Button color='primary' type='submit'>
-                    Save
+                    {typeOfEvent === typeEdit ? 'Save': 'Submit'}
                   </Button>
-                ) : (
-                  <Button color='primary' type='submit'>
-                    Submit
-                  </Button>
-                )}
               </div>
             </div>
           </form>

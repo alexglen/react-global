@@ -5,8 +5,7 @@ export const getGenres = (data) => {
   return [
     ...new Set(
       splitData(data)
-        .flat(Infinity)
-        .map((el) => el.trim())
+      .map((el) => el.trim())
     ),
   ];
 };

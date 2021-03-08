@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StatusModalsContext } from '../../../../context/StatusModalsContext';
-import { EDIT } from '../../../../constants';
+import { typeEdit } from '../../../../constants';
 import PropTypes from 'prop-types';
 import './MenuMovieCard.scss';
 
@@ -13,7 +13,7 @@ const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => 
     setIsCardModalOpen(true);
     setIdChosenCard(movieCardId);
     setIsMenuModalOpen(false);
-    setTypeOfEvent(EDIT);
+    setTypeOfEvent(typeEdit);
   };
 
   const deleteMovie = () => {
@@ -22,13 +22,18 @@ const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => 
     setIsMenuModalOpen(false);
   };
 
+  const close = () => {
+    setIsMenuModalOpen(false);
+    setIdChosenCard(movieCardId);
+  }
+
   const menu = isMenuModalOpen && (
     <div className='menu-modal'>
       <ul>
         <li onClick={editMovie}>Edit</li>
         <li onClick={deleteMovie}>Delete</li>
       </ul>
-      <div className='close' onClick={() => setIsMenuModalOpen(false)} />
+      <div className='close' onClick={close} />
     </div>
   );
 

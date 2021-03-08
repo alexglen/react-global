@@ -1,7 +1,4 @@
-$secondaryColor: #f65261;
-$secondaryHoverColor: #e43745;
-$secondaryFocusColor: #d87880;
-$primaryColor: #ffffff;
+@import '../../colors';
 
 .button {
   text-transform: uppercase;
