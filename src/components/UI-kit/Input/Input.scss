@@ -1,0 +1,33 @@
+@import '../../colors';
+
+.input-component {
+  margin: 10px 0;
+  input {
+    height: 36px;
+    border-radius: 5px;
+    background-color: $backgroundInputColor;
+    color: $primaryColor;
+    width: 100%;
+    padding-left: 3px;
+    &::-webkit-input-placeholder {
+      padding-left: 3px;
+    }
+    &::-moz-placeholder {
+      padding-left: 3px;
+    } /* Firefox 19+ */
+    &:-moz-placeholder {
+      padding-left: 3px;
+    } /* Firefox 18- */
+    &:-ms-input-placeholder {
+      padding-left: 3px;
+    }
+  }
+  label {
+    span {
+      color: $secondaryColor;
+      text-transform: uppercase;
+      margin: 5px 3px;
+      display: inline-block;
+    }
+  }
+}

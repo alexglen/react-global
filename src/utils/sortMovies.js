@@ -1,4 +1,4 @@
-import { aToZ, newToOld, oldToNew, zToA } from "../constants";
+import { aToZ, newToOld, oldToNew, zToA } from '../constants';
 
 const sortByReleaseDate = (a, b) => a.releaseDate - b.releaseDate;
 

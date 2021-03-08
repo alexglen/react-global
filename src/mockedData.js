@@ -11,7 +11,8 @@ export const mockedData = [
     genre: 'Drama, Fantasy, Adventures',
     releaseDate: 2014,
     id: '2',
-    img: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b0f70f29979965.560d298403bc7.jpg',
+    img:
+      'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b0f70f29979965.560d298403bc7.jpg',
   },
   {
     title: 'Forrest Gump',

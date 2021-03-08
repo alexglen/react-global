@@ -1,0 +1,24 @@
+@import '../../colors';
+
+.select-component {
+  margin: 10px 0;
+
+  label {
+    span {
+      color: $secondaryColor;
+      text-transform: uppercase;
+      margin: 5px 3px;
+      display: inline-block;
+    }
+  }
+  select {
+    height: 36px;
+    border-radius: 5px;
+    background-color: $backgroundColor;
+    color: $primaryColor;
+    width: 100%;
+    option {
+      padding: 5px 0;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import '../../colors';
+
 .movie {
   width: 30%;
   position: relative;
@@ -14,7 +16,7 @@
     align-items: center;
     justify-content: space-between;
     &-year {
-      border: 1px solid #ffffff;
+      border: 1px solid $borderColor;
       padding: 3px 12px;
       border-radius: 5px;
     }
@@ -27,8 +29,8 @@
   .dots-icon {
     width: 36px;
     height: 36px;
-    background-color: #232323;
-    background-image: radial-gradient(circle, #ffffff 2px, transparent 2px);
+    background-color: $backgroundColor;
+    background-image: radial-gradient(circle, $borderColor 2px, transparent 2px);
     background-size: 100% 33.33%;
     position: absolute;
     top: 12px;

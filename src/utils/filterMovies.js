@@ -1,10 +1,9 @@
-import { ALL } from "../constants";
+import { allMovies } from '../constants';
 
 export const filterMovies = (filter, movies) => {
-    if (filter === ALL) {
-     return movies;
-   } else {
-     return movies.filter(({genre}) => genre.includes(filter));
-   }
- };
- 
+  if (filter === allMovies) {
+    return movies;
+  } else {
+    return movies.filter(({ genre }) => genre.includes(filter));
+  }
+};
