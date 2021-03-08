@@ -1,7 +1,9 @@
+$footerColor: #555555;
+
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #555555;
+  background-color: $footerColor;
   height: 100%;
 }

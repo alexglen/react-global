@@ -1,9 +1,13 @@
+$secondaryColor: #f65261;
+$backgroundColor: #232323;
+$thirdBackgroundColor: #ffffff;
+
 .menu-modal {
   width: 50%;
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #232323;
+  background-color: $backgroundColor;
   border-radius: 5px;
 
   ul {
@@ -13,7 +17,7 @@
       padding: 8px;
       margin: 7px 0;
       &:hover {
-        background-color: #f65261;
+        background-color: $secondaryColor;
       }
     }
   }
@@ -35,7 +39,7 @@
       content: " ";
       height: 14px;
       width: 2px;
-      background-color: #ffffff;
+      background-color: $thirdBackgroundColor;
     }
 
     &:before {

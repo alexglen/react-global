@@ -1,3 +1,8 @@
+$secondaryColor: #f65261;
+$secondaryHoverColor: #e43745;
+$secondaryFocusColor: #d87880;
+$primaryColor: #ffffff;
+
 .button {
   text-transform: uppercase;
   border-radius: 5px;
@@ -6,25 +11,25 @@
 }
 
 .button-primary {
-  background-color: #f65261;
+  background-color: $secondaryColor;
   color: #ffffff;
   &:hover {
-    background-color: #e43745;
+    background-color: $secondaryHoverColor;
   }
   &:focus {
-    box-shadow: 0 0 0 0.2rem #d87880;
+    box-shadow: 0 0 0 0.2rem $secondaryFocusColor;
   }
 }
 
 .button-secondary {
   background-color: inherit;
-  color: #f65261;
-  border: 1px solid #f65261;
+  color: $secondaryColor;
+  border: 1px solid $secondaryColor;
   &:hover {
-    background-color: #f65261;
-    color: #ffffff;
+    background-color: $secondaryColor;
+    color: $primaryColor;
   }
   &:focus {
-    box-shadow: 0 0 0 0.2rem #d87880;
+    box-shadow: 0 0 0 0.2rem $secondaryFocusColor;
   }
 }

@@ -6,7 +6,7 @@ export const StatusModalsProvider = ({ children }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [idChosenCard, setIdChosenCard] = useState(null);
-  const [typeOfEvent, setTypeOfEvent] = useState('');
+  const [typeOfEvent, setTypeOfEvent] = useState(null);
   return (
     <StatusModalsContext.Provider
       value={{

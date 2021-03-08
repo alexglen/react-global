@@ -1,3 +1,6 @@
+$secondaryColor: #f65261;
+$secondaryBackgroundColor:#555555;
+
 .main-header {
   background-image: url('./assets/header-background.jpg');
   background-size: cover;
@@ -13,8 +16,8 @@
       height: 40px;
       width: 140px;
       text-transform: uppercase;
-      color: #f65261;
-      background-color: #555555;
+      color: $secondaryColor;
+      background-color: $secondaryBackgroundColor;
       cursor: pointer;
       border-radius: 5px;
     }

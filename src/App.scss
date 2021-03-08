@@ -1,5 +1,5 @@
-$mainBackgroundColor: #232323;
-$mainColor: #ffffff;
+$backgroundColor: #232323;
+$primaryColor: #ffffff;
 
 * {
   margin: 0;
@@ -8,8 +8,8 @@ $mainColor: #ffffff;
 }
 
 body {
-  background-color: $mainBackgroundColor;
-  color: $mainColor;
+  background-color: $backgroundColor;
+  color: $primaryColor;
   font-family: 'Orienta', sans-serif;
 }
 

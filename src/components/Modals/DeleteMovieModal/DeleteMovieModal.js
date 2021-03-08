@@ -22,7 +22,7 @@ const DeleteMovieModal = ({ id }) => {
           <p className="text">Are you show you want to delete this movie?</p>
           <div className="button">
             <Button
-              type="primary"
+              color="primary"
               onClick={() => alert(`Movie with ${idChosenCard} was deleted`)}
             >
               Confirm

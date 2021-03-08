@@ -3,7 +3,7 @@ import "./Input.scss";
 
 const Input = ({ placeholder, title, isDate, value, onChange, name }) => {
   const [inputType, setInputType] = useState("text");
-  console.log(value)
+
   return (
     <div className="input-component">
       <label>
@@ -16,6 +16,7 @@ const Input = ({ placeholder, title, isDate, value, onChange, name }) => {
           value={value}
           onChange={onChange}
           name={name}
+          required
         />
       </label>
     </div>

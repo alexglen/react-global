@@ -1,7 +1,10 @@
+$backgroundColor:#232323;
+$thirdBackgroundColor: #ffffff;
+
 .modal {
   width: 40%;
   margin: 0 auto;
-  background-color: #232323;
+  background-color: $backgroundColor;
   position: relative;
 
   .close {
@@ -22,7 +25,7 @@
       content: " ";
       height: 24px;
       width: 2px;
-      background-color: #ffffff;
+      background-color: $thirdBackgroundColor;
     }
 
     &:before {

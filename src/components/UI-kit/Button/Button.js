@@ -2,14 +2,14 @@ import React from "react";
 import classnames from "classnames";
 import "./Button.scss";
 
-const Button = ({ children, type, onClick }) => {
+const Button = ({ children, color, onClick, type }) => {
   const buttonClass = classnames("button", {
-    "button-primary": type === "primary",
-    "button-secondary": type === "secondary"
+    "button-primary": color === "primary",
+    "button-secondary": color === "secondary"
   });
 
   return (
-    <button className={buttonClass} onClick={onClick}>
+    <button className={buttonClass} onClick={onClick} type={type}>
       {children}
     </button>
   );

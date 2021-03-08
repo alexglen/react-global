@@ -1,5 +1,7 @@
+$secondaryColor: #f65261;
+
 .logo {
-  color: #f65261;
+  color: $secondaryColor;
   cursor: pointer;
 
   & span:first-child {

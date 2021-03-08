@@ -27,7 +27,7 @@ const Search = ({ setSearchValue }) => {
           value={value}
           onChange={handleChange}
         />
-        <Button type="primary">search</Button>
+        <Button color="primary">search</Button>
       </form>
     </div>
   );
