@@ -1,4 +1,4 @@
-$backgroundColor:#232323;
+$backgroundColor: #232323;
 $thirdBackgroundColor: #ffffff;
 
 .modal {
@@ -22,7 +22,7 @@ $thirdBackgroundColor: #ffffff;
     &:after {
       position: absolute;
       left: 20px;
-      content: " ";
+      content: ' ';
       height: 24px;
       width: 2px;
       background-color: $thirdBackgroundColor;

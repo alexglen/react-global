@@ -1,9 +1,9 @@
-import React from "react";
-import "./Select.scss";
+import React from 'react';
+import './Select.scss';
 
 const Select = ({ title, options, name, value, onChange }) => {
   return (
-    <div className="select-component">
+    <div className='select-component'>
       <label>
         <span>{title}</span>
         <select name={name} value={value} onChange={onChange}>
