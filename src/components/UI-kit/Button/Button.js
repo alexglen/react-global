@@ -1,11 +1,11 @@
-import React from 'react';
-import classnames from 'classnames';
-import './Button.scss';
+import React from "react";
+import classnames from "classnames";
+import "./Button.scss";
 
 const Button = ({ children, color, onClick, type }) => {
-  const buttonClass = classnames('button', {
-    'button-primary': color === 'primary',
-    'button-secondary': color === 'secondary',
+  const buttonClass = classnames("button", {
+    "button-primary": color === "primary",
+    "button-secondary": color === "secondary",
   });
 
   return (
