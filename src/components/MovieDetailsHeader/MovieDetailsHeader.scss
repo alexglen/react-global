@@ -1,6 +1,6 @@
-@import "../colors";
+@import '../colors';
 
-.header {
+.movie-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,6 +9,9 @@
   img {
     width: 2rem;
     cursor: pointer;
+  }
+  a {
+    text-decoration: none;
   }
 }
 

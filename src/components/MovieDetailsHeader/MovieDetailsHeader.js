@@ -1,20 +1,18 @@
-import React from "react";
-import Logo from "../Logo/Logo";
-import search from "./search-icon.png";
-import "./MovieDetailsHeader.scss";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Logo from '../Logo/Logo';
+import search from './search-icon.png';
+import './MovieDetailsHeader.scss';
 
 const MovieDetailsHeader = () => {
   return (
-    <div className="header">
-      <div className="header container">
-        <NavLink to="/" exact>
-          <Logo />
-        </NavLink>
-        <NavLink to="/" exact>
-          <img src={search} alt="search-icon" />
-        </NavLink>
-      </div>
+    <div className='movie-header container'>
+      <NavLink to='/'>
+        <Logo />
+      </NavLink>
+      <NavLink to='/'>
+        <img src={search} alt='search-icon' />
+      </NavLink>
     </div>
   );
 };
