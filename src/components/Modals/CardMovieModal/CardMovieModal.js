@@ -16,6 +16,18 @@ const CardMovieModal = () => {
 
   const activeCard = mockedData.find((card) => card.id === idChosenCard);
 
+<<<<<<< HEAD
+=======
+  const resetedState = {
+    title: '',
+    release_date: '',
+    url: '',
+    genre: '',
+    overview: '',
+    runtime: '',
+  };
+
+>>>>>>> main
   const initialState = useMemo(
     () => ({
       title: typeOfEvent === typeEdit ? activeCard?.title : "",
@@ -126,9 +138,15 @@ const CardMovieModal = () => {
                 </Button>
               </div>
               <div>
+<<<<<<< HEAD
                 <Button color="primary" type="submit">
                   {typeOfEvent === typeEdit ? "Save" : "Submit"}
                 </Button>
+=======
+                  <Button color='primary' type='submit'>
+                    {typeOfEvent === typeEdit ? 'Save': 'Submit'}
+                  </Button>
+>>>>>>> main
               </div>
             </div>
           </form>
