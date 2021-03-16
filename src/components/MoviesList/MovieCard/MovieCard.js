@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import MenuMovieCard from './MenuMovieCard/MenuMovieCard';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
@@ -17,9 +18,11 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
       className='movie'
       onMouseEnter={() => setIsMovieCardWithHover(true)}
       onMouseLeave={() => setIsMovieCardWithHover(false)}>
-      <div className='movie-img'>
-        <img src={img} alt={title} />
-      </div>
+      <NavLink to={`/movies/${id}`}>
+        <div className='movie-img'>
+          <img src={img} alt={title} />
+        </div>
+      </NavLink>
       <div className='movie-info'>
         <p>{title}</p>
         <p className='movie-info-year'>{releaseDate}</p>
