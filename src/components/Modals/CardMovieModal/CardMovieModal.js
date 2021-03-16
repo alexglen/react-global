@@ -20,17 +20,14 @@ const CardMovieModal = () => {
 
   const activeCard = mockedData.find((card) => card.id === idChosenCard);
 
-  const resetedState = useMemo(
-    () => ({
-      title: '',
-      release_date: '',
-      url: '',
-      genre: '',
-      overview: '',
-      runtime: '',
-    }),
-    []
-  );
+  const resetedState = {
+    title: '',
+    release_date: '',
+    url: '',
+    genre: '',
+    overview: '',
+    runtime: '',
+  };
 
   const initialState = useMemo(
     () => ({
@@ -67,13 +64,10 @@ const CardMovieModal = () => {
     [state]
   );
 
-  const handleReset = useCallback(
-    (event) => {
-      event.preventDefault();
-      setState(resetedState);
-    },
-    [resetedState]
-  );
+  const handleReset = useCallback((event) => {
+    event.preventDefault();
+    setState(resetedState);
+  }, []);
 
   const closeModal = useCallback(() => {
     setIsCardModalOpen(false);
@@ -154,9 +148,9 @@ const CardMovieModal = () => {
                 </Button>
               </div>
               <div>
-                <Button color='primary' type='submit'>
-                  {typeOfEvent === typeEdit ? 'Save' : 'Submit'}
-                </Button>
+                  <Button color='primary' type='submit'>
+                    {typeOfEvent === typeEdit ? 'Save': 'Submit'}
+                  </Button>
               </div>
             </div>
           </form>
