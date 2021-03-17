@@ -8,11 +8,15 @@ import { mockedData } from "../../../mockedData";
 import { getGenres } from "../../../utils/getGenres";
 import { resetedState, typeAdd, typeEdit } from "../../../constants";
 import "./CardMovieModal.scss";
+import { useDispatch } from "react-redux";
+import { addNewMovie } from "../../../redux/actions";
 
 const CardMovieModal = () => {
   const { isCardModalOpen, setIsCardModalOpen, typeOfEvent, setTypeOfEvent, idChosenCard } = useContext(
     StatusModalsContext
   );
+
+  const dispatch = useDispatch();
 
   const activeCard = mockedData.find((card) => card.id === idChosenCard);
 
@@ -20,10 +24,11 @@ const CardMovieModal = () => {
     () => ({
       title: typeOfEvent === typeEdit ? activeCard?.title : "",
       release_date: typeOfEvent === typeEdit ? activeCard.releaseDate : "",
-      url: "",
+      img: "",
       genre: typeOfEvent === typeEdit ? activeCard.genre.split(", ")[0] : "",
-      overview: "",
-      runtime: "",
+      duration: "",
+      rating: "",
+      description: "",
     }),
     [typeOfEvent, activeCard]
   );
@@ -46,7 +51,18 @@ const CardMovieModal = () => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      console.log(state);
+      if (typeOfEvent !== "typeEdit") {
+        fetch("https://netflix-fbbe6-default-rtdb.firebaseio.com/movies.json", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+          },
+          body: JSON.stringify(state),
+        }).then(() => {
+          dispatch(addNewMovie(state));
+          setIsCardModalOpen(false);
+        });
+      }
     },
     [state]
   );
@@ -93,10 +109,10 @@ const CardMovieModal = () => {
             />
             <Input
               placeholder="Movie URL here"
-              title="Movie URL"
-              name="url"
+              title="Movie Poster"
+              name="img"
               onChange={handleChange}
-              value={state.url}
+              value={state.img}
             />
             <Select
               title="Genre"
@@ -106,17 +122,24 @@ const CardMovieModal = () => {
               value={state.genre}
             />
             <Input
-              placeholder="Overview here"
-              title="Overview"
-              name="overview"
-              value={state.overview}
+              placeholder="Duration"
+              title="Duration"
+              name="duration"
+              value={state.duration}
               onChange={handleChange}
             />
             <Input
-              placeholder="Runtime here"
-              title="Runtime"
-              name="runtime"
-              value={state.runtime}
+              placeholder="Rating here"
+              title="Rating"
+              name="rating"
+              value={state.rating}
+              onChange={handleChange}
+            />
+            <Input
+              placeholder="Description here"
+              title="Description"
+              name="description"
+              value={state.description}
               onChange={handleChange}
             />
             <div className="buttons">

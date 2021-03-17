@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { resetedState } from "../../constants";
-import { mockedData } from "../../mockedData";
 import "./MovieDetails.scss";
 
 const MovieDetails = () => {
@@ -9,8 +9,10 @@ const MovieDetails = () => {
 
   const [detailsMovie, setDetailsMovie] = useState(resetedState);
 
+  const { movies } = useSelector(({ moviesReducer }) => moviesReducer);
+
   useEffect(() => {
-    const currentMovie = mockedData.find((movie) => movie.id === id);
+    const currentMovie = movies.find((movie) => movie.id === id);
     setDetailsMovie({ ...currentMovie });
   }, [id]);
 
