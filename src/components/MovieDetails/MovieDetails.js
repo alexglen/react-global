@@ -12,9 +12,8 @@ const MovieDetails = () => {
   const { movies } = useSelector(({ moviesReducer }) => moviesReducer);
 
   useEffect(() => {
-    const currentMovie = movies.find((movie) => movie.id === id);
-    setDetailsMovie({ ...currentMovie });
-  }, [id]);
+    setDetailsMovie({ ...movies.find((movie) => movie.id === id) });
+  }, [id, movies]);
 
   return (
     <div className="container">

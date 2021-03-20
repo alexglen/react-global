@@ -1,6 +1,6 @@
-import { allMovies } from '../constants';
+import { allMovies } from "../constants";
 
-export const filterMovies = (filter, movies) => {
+export const getFilteredMovies = (filter, movies) => {
   if (filter === allMovies) {
     return movies;
   } else {

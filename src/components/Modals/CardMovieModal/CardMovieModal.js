@@ -4,12 +4,12 @@ import Modal from "react-modal";
 import Button from "../../UI-kit/Button/Button";
 import Input from "../../UI-kit/Input/Input";
 import Select from "../../UI-kit/Select/Select";
-import { mockedData } from "../../../mockedData";
 import { getGenres } from "../../../utils/getGenres";
 import { resetedState, typeAdd, typeEdit } from "../../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewMovie, editMovie } from "../../../redux/actions";
+import { postMovie } from "../../../actions";
 import "./CardMovieModal.scss";
-import { useDispatch } from "react-redux";
-import { addNewMovie } from "../../../redux/actions";
 
 const CardMovieModal = () => {
   const { isCardModalOpen, setIsCardModalOpen, typeOfEvent, setTypeOfEvent, idChosenCard } = useContext(
@@ -18,17 +18,19 @@ const CardMovieModal = () => {
 
   const dispatch = useDispatch();
 
-  const activeCard = mockedData.find((card) => card.id === idChosenCard);
+  const { movies } = useSelector(({ moviesReducer }) => moviesReducer);
+
+  const activeCard = movies.find((card) => card.id === idChosenCard);
 
   const initialState = useMemo(
     () => ({
-      title: typeOfEvent === typeEdit ? activeCard?.title : "",
-      release_date: typeOfEvent === typeEdit ? activeCard.releaseDate : "",
-      img: "",
-      genre: typeOfEvent === typeEdit ? activeCard.genre.split(", ")[0] : "",
-      duration: "",
-      rating: "",
-      description: "",
+      title: typeOfEvent === typeEdit ? activeCard.title : "",
+      releaseDate: typeOfEvent === typeEdit ? activeCard.releaseDate : "",
+      img: typeOfEvent === typeEdit ? activeCard.img : "",
+      genre: typeOfEvent === typeEdit ? activeCard.genre : "",
+      duration: typeOfEvent === typeEdit ? activeCard.duration : "",
+      rating: typeOfEvent === typeEdit ? activeCard.rating : "",
+      description: typeOfEvent === typeEdit ? activeCard.description : "",
     }),
     [typeOfEvent, activeCard]
   );
@@ -48,23 +50,26 @@ const CardMovieModal = () => {
     }));
   }, []);
 
+  console.log(typeOfEvent);
+
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      if (typeOfEvent !== "typeEdit") {
-        fetch("https://netflix-fbbe6-default-rtdb.firebaseio.com/movies.json", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json;charset=utf-8",
-          },
-          body: JSON.stringify(state),
-        }).then(() => {
+      if (typeOfEvent !== typeEdit) {
+        postMovie(state).then(() => {
           dispatch(addNewMovie(state));
           setIsCardModalOpen(false);
         });
+      } else {
+        dispatch(editMovie(state, idChosenCard));
+        setIsCardModalOpen(false);
+        // editMovie(state, idChosenCard).then(() => {
+        //   dispatch(editMovie(state, idChosenCard));
+        //   setIsCardModalOpen(false);
+        // });
       }
     },
-    [state]
+    [state, dispatch, setIsCardModalOpen, typeOfEvent]
   );
 
   const handleReset = useCallback((event) => {
@@ -76,7 +81,7 @@ const CardMovieModal = () => {
     setIsCardModalOpen(false);
     setState({
       title: "",
-      release_date: "",
+      releaseDate: "",
       url: "",
       genre: "",
       overview: "",
@@ -102,10 +107,10 @@ const CardMovieModal = () => {
             <Input
               placeholder="Select date"
               title="Release date"
-              isDate
-              name="release_date"
+              type="date"
+              name="releaseDate"
               onChange={handleChange}
-              value={state.release_date}
+              value={state.releaseDate}
             />
             <Input
               placeholder="Movie URL here"
@@ -116,7 +121,7 @@ const CardMovieModal = () => {
             />
             <Select
               title="Genre"
-              options={getGenres(mockedData)}
+              options={getGenres(movies)}
               name="genre"
               onChange={handleChange}
               value={state.genre}

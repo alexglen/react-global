@@ -26,7 +26,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
       </NavLink>
       <div className="movie-info">
         <p>{title}</p>
-        <p className="movie-info-year">{releaseDate}</p>
+        <p className="movie-info-year">{new Date(String(releaseDate)).getFullYear()}</p>
       </div>
       <p className="movie-genre">{genre}</p>
       <div className={iconClass} onClick={() => setIsMenuModalOpen(true)}></div>
@@ -38,7 +38,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
 MovieCard.propTypes = {
   img: PropTypes.string,
   title: PropTypes.string,
-  releaseDate: PropTypes.number,
+  releaseDate: PropTypes.string,
   genre: PropTypes.string,
   id: PropTypes.string,
 };

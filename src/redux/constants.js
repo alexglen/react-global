@@ -3,3 +3,8 @@ export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_ERROR = "FETCH_DATA_ERROR";
 
 export const ADD_NEW_MOVIE = "ADD_NEW_MOVIE";
+export const EDIT_MOVIE = "EDIT_MOVIE";
+
+export const APPLY_FILTER = "APPLY_FILTER";
+export const APPLY_SORTING = "APPLY_SORTING";
+export const APPLY_SEARCH = "APPLY_SEARCH";

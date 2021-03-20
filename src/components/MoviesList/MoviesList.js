@@ -24,9 +24,12 @@ MoviesList.propTypes = {
     PropTypes.shape({
       img: PropTypes.string,
       title: PropTypes.string,
-      releaseDate: PropTypes.number,
+      releaseDate: PropTypes.string,
       genre: PropTypes.string,
       id: PropTypes.string,
+      duration: PropTypes.string,
+      rating: PropTypes.string,
+      description: PropTypes.string,
     })
   ),
 };

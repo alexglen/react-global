@@ -1,40 +1,40 @@
-import React from 'react';
-import Dropdown from 'rc-dropdown';
-import Menu, { Item as MenuItem } from 'rc-menu';
-import { typeOfSorting } from '../../constants';
-import PropTypes from 'prop-types';
-import 'rc-dropdown/assets/index.css';
-import './MoviesSorting.scss';
+import React from "react";
+import Dropdown from "rc-dropdown";
+import Menu, { Item as MenuItem } from "rc-menu";
+import { useDispatch, useSelector } from "react-redux";
+import { sortMovies } from "../../redux/actions";
+import { sortingTypes } from "../../constants";
+import "rc-dropdown/assets/index.css";
+import "./MoviesSorting.scss";
 
-const MoviesSorting = ({ setTypeSorting, typeSorting }) => {
+const MoviesSorting = () => {
+  const dispatch = useDispatch();
+
+  const { sorting } = useSelector(({ sortingReducer }) => sortingReducer);
+
   const onSelect = ({ key }) => {
-    setTypeSorting(key);
+    dispatch(sortMovies(key));
   };
 
   const menu = (
     <Menu onSelect={onSelect}>
-      {Object.entries(typeOfSorting).map(([key, value]) => (
+      {Object.entries(sortingTypes).map(([key, value]) => (
         <MenuItem key={key}>{value}</MenuItem>
       ))}
     </Menu>
   );
 
   return (
-    <div className='sorting'>
-      <div className='sorting-title'>Sort by</div>
-      <Dropdown trigger={['click']} overlay={menu} animation='slide-up'>
-        <div className='sorting-type'>
-          <span>{typeOfSorting[typeSorting]}</span>
-          <span className='icon'></span>
+    <div className="sorting">
+      <div className="sorting-title">Sort by</div>
+      <Dropdown trigger={["click"]} overlay={menu} animation="slide-up">
+        <div className="sorting-type">
+          <span>{sortingTypes[sorting]}</span>
+          <span className="icon"></span>
         </div>
       </Dropdown>
     </div>
   );
-};
-
-MoviesSorting.propTypes = {
-  typeSorting: PropTypes.string,
-  setTypeSorting: PropTypes.func,
 };
 
 export default MoviesSorting;

@@ -1,3 +1,5 @@
+@import "../colors";
+
 .movies-list {
   display: flex;
   flex-wrap: wrap;
@@ -10,4 +12,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.error {
+  color: $secondaryColor;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
