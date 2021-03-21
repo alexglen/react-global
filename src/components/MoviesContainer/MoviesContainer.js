@@ -15,13 +15,9 @@ const MoviesContainer = () => {
   const { searchValue } = useSelector(({ searchReducer }) => searchReducer);
   const { sorting } = useSelector(({ sortingReducer }) => sortingReducer);
 
-  console.log(sorting);
-
   const moviesAfterFilter = getFilteredMovies(filter, movies);
   const moviesAfterSearch = getSearchedMovies(searchValue, moviesAfterFilter);
   const moviesAfterSorting = getSortedMovies(sorting, moviesAfterSearch);
-
-  console.log(movies);
 
   useEffect(() => {
     dispatch(getMovies());

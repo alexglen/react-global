@@ -4,11 +4,9 @@ import Modal from "react-modal";
 import Button from "../../UI-kit/Button/Button";
 import Input from "../../UI-kit/Input/Input";
 import Select from "../../UI-kit/Select/Select";
-import { getGenres } from "../../../utils/getGenres";
-import { resetedState, typeAdd, typeEdit } from "../../../constants";
+import { genres, resetedState, typeAdd, typeEdit } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewMovie, editMovie } from "../../../redux/actions";
-import { postMovie } from "../../../actions";
 import "./CardMovieModal.scss";
 
 const CardMovieModal = () => {
@@ -24,13 +22,13 @@ const CardMovieModal = () => {
 
   const initialState = useMemo(
     () => ({
-      title: typeOfEvent === typeEdit ? activeCard.title : "",
-      releaseDate: typeOfEvent === typeEdit ? activeCard.releaseDate : "",
-      img: typeOfEvent === typeEdit ? activeCard.img : "",
-      genre: typeOfEvent === typeEdit ? activeCard.genre : "",
-      duration: typeOfEvent === typeEdit ? activeCard.duration : "",
-      rating: typeOfEvent === typeEdit ? activeCard.rating : "",
-      description: typeOfEvent === typeEdit ? activeCard.description : "",
+      title: typeOfEvent === typeEdit ? activeCard?.title : "",
+      releaseDate: typeOfEvent === typeEdit ? activeCard?.releaseDate : "",
+      img: typeOfEvent === typeEdit ? activeCard?.img : "",
+      genre: typeOfEvent === typeEdit ? activeCard?.genre : "",
+      duration: typeOfEvent === typeEdit ? activeCard?.duration : "",
+      rating: typeOfEvent === typeEdit ? activeCard?.rating : "",
+      description: typeOfEvent === typeEdit ? activeCard?.description : "",
     }),
     [typeOfEvent, activeCard]
   );
@@ -50,26 +48,19 @@ const CardMovieModal = () => {
     }));
   }, []);
 
-  console.log(typeOfEvent);
-
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
       if (typeOfEvent !== typeEdit) {
-        postMovie(state).then(() => {
-          dispatch(addNewMovie(state));
-          setIsCardModalOpen(false);
-        });
+        dispatch(addNewMovie(state));
+        setIsCardModalOpen(false);
+        setState(resetedState);
       } else {
         dispatch(editMovie(state, idChosenCard));
         setIsCardModalOpen(false);
-        // editMovie(state, idChosenCard).then(() => {
-        //   dispatch(editMovie(state, idChosenCard));
-        //   setIsCardModalOpen(false);
-        // });
       }
     },
-    [state, dispatch, setIsCardModalOpen, typeOfEvent]
+    [state, dispatch, setIsCardModalOpen, typeOfEvent, idChosenCard]
   );
 
   const handleReset = useCallback((event) => {
@@ -119,13 +110,7 @@ const CardMovieModal = () => {
               onChange={handleChange}
               value={state.img}
             />
-            <Select
-              title="Genre"
-              options={getGenres(movies)}
-              name="genre"
-              onChange={handleChange}
-              value={state.genre}
-            />
+            <Select title="Genre" options={genres} name="genre" onChange={handleChange} value={state.genre} />
             <Input
               placeholder="Duration"
               title="Duration"

@@ -23,3 +23,5 @@ export const resetedState = {
   duration: "",
   description: "",
 };
+
+export const genres = ["Drama", "Thriller", "Comedy", "Horror", "Detective"];
