@@ -8,6 +8,7 @@ import { genres, resetedState, typeAdd, typeEdit } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewMovie, editMovie } from "../../../redux/actions";
 import "./CardMovieModal.scss";
+import TextArea from "../../UI-kit/TextArea/TextArea";
 
 const CardMovieModal = () => {
   const { isCardModalOpen, setIsCardModalOpen, typeOfEvent, setTypeOfEvent, idChosenCard } = useContext(
@@ -125,7 +126,7 @@ const CardMovieModal = () => {
               value={state.rating}
               onChange={handleChange}
             />
-            <Input
+            <TextArea
               placeholder="Description here"
               title="Description"
               name="description"
