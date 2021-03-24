@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useLocation } from "react-router";
 import { resetedState } from "../../constants";
 import "./MovieDetails.scss";
 
 const MovieDetails = () => {
-  const { id } = useParams();
+  const { id } = useLocation();
 
   const [detailsMovie, setDetailsMovie] = useState(resetedState);
 
