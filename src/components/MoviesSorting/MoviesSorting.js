@@ -10,7 +10,7 @@ import "./MoviesSorting.scss";
 const MoviesSorting = () => {
   const dispatch = useDispatch();
 
-  const { sorting } = useSelector(({ sortingReducer }) => sortingReducer);
+  const { sorting } = useSelector(({ sorting }) => sorting);
 
   const onSelect = ({ key }) => {
     dispatch(sortMovies(key));

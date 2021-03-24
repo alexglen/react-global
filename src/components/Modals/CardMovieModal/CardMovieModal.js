@@ -12,8 +12,8 @@ import "./CardMovieModal.scss";
 const CardMovieModal = () => {
   const dispatch = useDispatch();
 
-  const { movies } = useSelector(({ moviesReducer }) => moviesReducer);
-  const { isCardModalOpen, currentCardId, typeEvent } = useSelector(({ modalsReducer }) => modalsReducer);
+  const { movies } = useSelector(({ movies }) => movies);
+  const { isCardModalOpen, currentCardId, typeEvent } = useSelector(({ modals }) => modals);
 
   const activeCard = movies.find((card) => card.id === currentCardId);
 

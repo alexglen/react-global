@@ -9,7 +9,7 @@ const MovieDetails = () => {
 
   const [detailsMovie, setDetailsMovie] = useState(resetedState);
 
-  const { movies } = useSelector(({ moviesReducer }) => moviesReducer);
+  const { movies } = useSelector(({ movies }) => movies);
 
   useEffect(() => {
     setDetailsMovie({ ...movies.find((movie) => movie.id === id) });

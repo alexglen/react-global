@@ -7,11 +7,11 @@ import { searchReducer } from "./reducers/searchReducer";
 import { sortingReducer } from "./reducers/sortingReducer";
 
 const reducer = combineReducers({
-  moviesReducer,
-  filterReducer,
-  sortingReducer,
-  searchReducer,
-  modalsReducer,
+  movies: moviesReducer,
+  filters: filterReducer,
+  sorting: sortingReducer,
+  search: searchReducer,
+  modals: modalsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

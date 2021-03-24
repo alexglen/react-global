@@ -10,10 +10,10 @@ import { getSortedMovies } from "../../utils/getSortedMovies";
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
-  const { movies, isLoading, error } = useSelector(({ moviesReducer }) => moviesReducer);
-  const { filter } = useSelector(({ filterReducer }) => filterReducer);
-  const { searchValue } = useSelector(({ searchReducer }) => searchReducer);
-  const { sorting } = useSelector(({ sortingReducer }) => sortingReducer);
+  const { movies, isLoading, error } = useSelector(({ movies }) => movies);
+  const { filter } = useSelector(({ filters }) => filters);
+  const { searchValue } = useSelector(({ search }) => search);
+  const { sorting } = useSelector(({ sorting }) => sorting);
 
   const moviesAfterFilter = getFilteredMovies(filter, movies);
   const moviesAfterSearch = getSearchedMovies(searchValue, moviesAfterFilter);

@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 import "./DeleteMovieModal.scss";
 
 const DeleteMovieModal = () => {
-  const { isDeleteModalOpen, currentCardId } = useSelector(({ modalsReducer }) => modalsReducer);
+  const { isDeleteModalOpen, currentCardId } = useSelector(({ modals }) => modals);
 
   const history = useHistory();
 
