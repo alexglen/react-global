@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import Logo from "../Logo/Logo";
 import Search from "./Search/Search";
-import { StatusModalsContext } from "../../context/StatusModalsContext";
 import { typeAdd } from "./../../constants";
+import { useDispatch } from "react-redux";
+import { openCardModal, setTypeEvent } from "../../redux/actions";
 import "./MainHeader.scss";
 
 const MainHeader = () => {
-  const { setIsCardModalOpen, setTypeOfEvent } = useContext(StatusModalsContext);
+  const dispatch = useDispatch();
 
   const openAddMovieModal = () => {
-    setIsCardModalOpen(true);
-    setTypeOfEvent(typeAdd);
+    dispatch(openCardModal());
+    dispatch(setTypeEvent(typeAdd));
   };
 
   return (

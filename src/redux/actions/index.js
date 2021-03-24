@@ -4,11 +4,17 @@ import {
   APPLY_FILTER,
   APPLY_SEARCH,
   APPLY_SORTING,
+  CLOSE_CARD_MODAL,
+  CLOSE_DELETE_MODAL,
   DELETE_MOVIE,
   EDIT_MOVIE,
   FETCH_DATA_ERROR,
   FETCH_DATA_START,
   FETCH_DATA_SUCCESS,
+  OPEN_CARD_MODAL,
+  OPEN_DELETE_MODAL,
+  SET_CURRENT_CARD_ID,
+  SET_TYPE_EVENT,
 } from "../constants";
 
 export const getMovies = () => {
@@ -76,3 +82,11 @@ export const deleteMovie = (id) => {
 export const filteredMovies = (filter) => ({ type: APPLY_FILTER, filter });
 export const sortMovies = (typeOfSorting) => ({ type: APPLY_SORTING, typeOfSorting });
 export const searchMovies = (value) => ({ type: APPLY_SEARCH, value });
+
+export const openDeleteModal = () => ({ type: OPEN_DELETE_MODAL });
+export const closeDeleteModal = () => ({ type: CLOSE_DELETE_MODAL });
+export const openCardModal = () => ({ type: OPEN_CARD_MODAL });
+export const closeCardModal = () => ({ type: CLOSE_CARD_MODAL });
+
+export const setCurrentCardId = (id) => ({ type: SET_CURRENT_CARD_ID, payload: id });
+export const setTypeEvent = (id) => ({ type: SET_TYPE_EVENT, payload: id });

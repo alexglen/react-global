@@ -1,26 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 import Modal from "react-modal";
 import Button from "../../UI-kit/Button/Button";
-import { StatusModalsContext } from "../../../context/StatusModalsContext";
-import { useDispatch } from "react-redux";
-import { deleteMovie } from "../../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { closeDeleteModal, deleteMovie } from "../../../redux/actions";
 import { useHistory } from "react-router";
 import "./DeleteMovieModal.scss";
 
 const DeleteMovieModal = () => {
-  const { isDeleteModalOpen, setIsDeleteModalOpen, idChosenCard } = useContext(StatusModalsContext);
+  const { isDeleteModalOpen, currentCardId } = useSelector(({ modalsReducer }) => modalsReducer);
 
   const history = useHistory();
 
   const dispatch = useDispatch();
 
   const deleteMovieCard = () => {
-    dispatch(deleteMovie(idChosenCard));
-    setIsDeleteModalOpen(false);
+    dispatch(deleteMovie(currentCardId));
+    dispatch(closeDeleteModal());
     history.push("/");
   };
 
-  const closeModal = () => setIsDeleteModalOpen(false);
+  const closeModal = () => dispatch(closeDeleteModal());
 
   return (
     <Modal isOpen={isDeleteModalOpen} onRequestClose={closeModal} className="modal" ariaHideApp={false}>

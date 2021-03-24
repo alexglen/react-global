@@ -1,46 +1,42 @@
-import React, { useCallback, useContext, useEffect, useState, useMemo } from "react";
-import { StatusModalsContext } from "../../../context/StatusModalsContext";
+import React, { useCallback, useEffect, useState, useMemo } from "react";
 import Modal from "react-modal";
 import Button from "../../UI-kit/Button/Button";
 import Input from "../../UI-kit/Input/Input";
 import Select from "../../UI-kit/Select/Select";
 import { genres, resetedState, typeAdd, typeEdit } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewMovie, editMovie } from "../../../redux/actions";
-import "./CardMovieModal.scss";
+import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from "../../../redux/actions";
 import TextArea from "../../UI-kit/TextArea/TextArea";
+import "./CardMovieModal.scss";
 
 const CardMovieModal = () => {
-  const { isCardModalOpen, setIsCardModalOpen, typeOfEvent, setTypeOfEvent, idChosenCard } = useContext(
-    StatusModalsContext
-  );
-
   const dispatch = useDispatch();
 
   const { movies } = useSelector(({ moviesReducer }) => moviesReducer);
+  const { isCardModalOpen, currentCardId, typeEvent } = useSelector(({ modalsReducer }) => modalsReducer);
 
-  const activeCard = movies.find((card) => card.id === idChosenCard);
+  const activeCard = movies.find((card) => card.id === currentCardId);
 
   const initialState = useMemo(
     () => ({
-      title: typeOfEvent === typeEdit ? activeCard?.title : "",
-      releaseDate: typeOfEvent === typeEdit ? activeCard?.releaseDate : "",
-      img: typeOfEvent === typeEdit ? activeCard?.img : "",
-      genre: typeOfEvent === typeEdit ? activeCard?.genre : "",
-      duration: typeOfEvent === typeEdit ? activeCard?.duration : "",
-      rating: typeOfEvent === typeEdit ? activeCard?.rating : "",
-      description: typeOfEvent === typeEdit ? activeCard?.description : "",
+      title: typeEvent === typeEdit ? activeCard?.title : "",
+      releaseDate: typeEvent === typeEdit ? activeCard?.releaseDate : "",
+      img: typeEvent === typeEdit ? activeCard?.img : "",
+      genre: typeEvent === typeEdit ? activeCard?.genre : "",
+      duration: typeEvent === typeEdit ? activeCard?.duration : "",
+      rating: typeEvent === typeEdit ? activeCard?.rating : "",
+      description: typeEvent === typeEdit ? activeCard?.description : "",
     }),
-    [typeOfEvent, activeCard]
+    [typeEvent, activeCard]
   );
 
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    if (typeOfEvent) {
+    if (typeEvent) {
       setState(initialState);
     }
-  }, [typeOfEvent, initialState]);
+  }, [typeEvent, initialState]);
 
   const handleChange = useCallback((event) => {
     setState((state) => ({
@@ -52,16 +48,15 @@ const CardMovieModal = () => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      if (typeOfEvent !== typeEdit) {
+      if (typeEvent !== typeEdit) {
         dispatch(addNewMovie(state));
-        setIsCardModalOpen(false);
         setState(resetedState);
       } else {
-        dispatch(editMovie(state, idChosenCard));
-        setIsCardModalOpen(false);
+        dispatch(editMovie(state, currentCardId));
       }
+      dispatch(closeCardModal());
     },
-    [state, dispatch, setIsCardModalOpen, typeOfEvent, idChosenCard]
+    [state, dispatch, typeEvent, currentCardId]
   );
 
   const handleReset = useCallback((event) => {
@@ -70,7 +65,7 @@ const CardMovieModal = () => {
   }, []);
 
   const closeModal = useCallback(() => {
-    setIsCardModalOpen(false);
+    dispatch(closeCardModal());
     setState({
       title: "",
       releaseDate: "",
@@ -79,8 +74,8 @@ const CardMovieModal = () => {
       overview: "",
       runtime: "",
     });
-    setTypeOfEvent(null);
-  }, [setIsCardModalOpen, setTypeOfEvent]);
+    dispatch(setTypeEvent(null));
+  }, [dispatch]);
 
   return (
     <Modal
@@ -93,7 +88,7 @@ const CardMovieModal = () => {
       <>
         <div className="close" onClick={closeModal} />
         <div className="container">
-          <h1 className="title">{typeOfEvent === typeAdd ? "Add movie" : "Edit movie"}</h1>
+          <h1 className="title">{typeEvent === typeAdd ? "Add movie" : "Edit movie"}</h1>
           <form className="inputs" onSubmit={handleSubmit}>
             <Input placeholder="Movie title" title="Title" name="title" onChange={handleChange} value={state.title} />
             <Input
@@ -141,7 +136,7 @@ const CardMovieModal = () => {
               </div>
               <div>
                 <Button color="primary" type="submit">
-                  {typeOfEvent === typeEdit ? "Save" : "Submit"}
+                  {typeEvent === typeEdit ? "Save" : "Submit"}
                 </Button>
               </div>
             </div>
