@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
-import thunk from "redux-thunk";
 import { filterReducer } from "./reducers/filterReducer";
 import { modalsReducer } from "./reducers/modalsReducer";
 import { moviesReducer } from "./reducers/moviesReducer";
 import { searchReducer } from "./reducers/searchReducer";
 import { sortingReducer } from "./reducers/sortingReducer";
+import thunk from "redux-thunk";
 
 const reducer = combineReducers({
   movies: moviesReducer,
