@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router";
 import { resetedState } from "../../constants";
-import { mockedData } from "../../mockedData";
+import { moviesSelector } from "../../redux/selectors/moviesSelectors";
 import "./MovieDetails.scss";
 
 const MovieDetails = () => {
-  const { id } = useParams();
+  const { id } = useLocation();
 
   const [detailsMovie, setDetailsMovie] = useState(resetedState);
 
+  const movies = useSelector(moviesSelector);
+
   useEffect(() => {
-    const currentMovie = mockedData.find((movie) => movie.id === id);
-    setDetailsMovie({ ...currentMovie });
-  }, [id]);
+    setDetailsMovie({ ...movies.find((movie) => movie.id === id) });
+  }, [id, movies]);
 
   return (
     <div className="container">

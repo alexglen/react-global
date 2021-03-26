@@ -4,21 +4,24 @@ export const typeAdd = "add";
 
 export const oldToNew = "oldToNew";
 export const newToOld = "newToOld";
-export const aToZ = "aToZ";
-export const zToA = "zToA";
+export const incRating = "incRating";
+export const decRating = "decRating";
 
-export const typeOfSorting = {
+export const sortingTypes = {
   [oldToNew]: "Release date: from old",
   [newToOld]: "Release date: from new",
-  [aToZ]: "A to Z",
-  [zToA]: "Z to A",
+  [incRating]: "With the high rating",
+  [decRating]: "With the low rating",
 };
 
 export const resetedState = {
   title: "",
-  release_date: "",
-  url: "",
+  releaseDate: "",
+  img: "",
   genre: "",
-  overview: "",
-  runtime: "",
+  rating: "",
+  duration: "",
+  description: "",
 };
+
+export const genres = ["Drama", "Thriller", "Comedy", "Horror", "Detective"];

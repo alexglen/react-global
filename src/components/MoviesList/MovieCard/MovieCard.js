@@ -1,39 +1,43 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import MenuMovieCard from './MenuMovieCard/MenuMovieCard';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
-import './MovieCard.scss';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import MenuMovieCard from "./MenuMovieCard/MenuMovieCard";
+import classnames from "classnames";
+import PropTypes from "prop-types";
+import "./MovieCard.scss";
 
 const MovieCard = ({ img, title, releaseDate, genre, id }) => {
   const [isMovieCardWithHover, setIsMovieCardWithHover] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
-  const iconClass = classnames('dots-icon', {
-    'dots-icon-hidden': !isMovieCardWithHover,
+  const iconClass = classnames("dots-icon", {
+    "dots-icon-hidden": !isMovieCardWithHover,
   });
+
+  const fullYear = new Date(releaseDate).getFullYear();
 
   return (
     <div
-      className='movie'
+      className="movie"
       onMouseEnter={() => setIsMovieCardWithHover(true)}
-      onMouseLeave={() => setIsMovieCardWithHover(false)}>
-      <NavLink to={`/movies/${id}`}>
-        <div className='movie-img'>
+      onMouseLeave={() => setIsMovieCardWithHover(false)}
+    >
+      <Link
+        to={{
+          pathname: `/movies/${title.replace(/\s/g, "")}`,
+          id,
+        }}
+      >
+        <div className="movie-img">
           <img src={img} alt={title} />
         </div>
-      </NavLink>
-      <div className='movie-info'>
+      </Link>
+      <div className="movie-info">
         <p>{title}</p>
-        <p className='movie-info-year'>{releaseDate}</p>
+        <p className="movie-info-year">{fullYear}</p>
       </div>
-      <p className='movie-genre'>{genre}</p>
+      <p className="movie-genre">{genre}</p>
       <div className={iconClass} onClick={() => setIsMenuModalOpen(true)}></div>
-      <MenuMovieCard
-        isMenuModalOpen={isMenuModalOpen}
-        setIsMenuModalOpen={setIsMenuModalOpen}
-        movieCardId={id}
-      />
+      <MenuMovieCard isMenuModalOpen={isMenuModalOpen} setIsMenuModalOpen={setIsMenuModalOpen} movieCardId={id} />
     </div>
   );
 };
@@ -41,7 +45,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
 MovieCard.propTypes = {
   img: PropTypes.string,
   title: PropTypes.string,
-  releaseDate: PropTypes.number,
+  releaseDate: PropTypes.string,
   genre: PropTypes.string,
   id: PropTypes.string,
 };

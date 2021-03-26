@@ -1,39 +1,38 @@
-import React, { useContext } from 'react';
-import { StatusModalsContext } from '../../../../context/StatusModalsContext';
-import { typeEdit } from '../../../../constants';
-import PropTypes from 'prop-types';
-import './MenuMovieCard.scss';
+import React from "react";
+import { typeEdit } from "../../../../constants";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { openCardModal, openDeleteModal, setCurrentCardId, setTypeEvent } from "../../../../redux/actions";
+import "./MenuMovieCard.scss";
 
 const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => {
-  const { setIsDeleteModalOpen, setIsCardModalOpen, setIdChosenCard, setTypeOfEvent } = useContext(
-    StatusModalsContext
-  );
+  const dispatch = useDispatch();
 
   const editMovie = () => {
-    setIsCardModalOpen(true);
-    setIdChosenCard(movieCardId);
+    dispatch(openCardModal());
+    dispatch(setCurrentCardId(movieCardId));
     setIsMenuModalOpen(false);
-    setTypeOfEvent(typeEdit);
+    dispatch(setTypeEvent(typeEdit));
   };
 
   const deleteMovie = () => {
-    setIsDeleteModalOpen(true);
-    setIdChosenCard(movieCardId);
+    dispatch(openDeleteModal());
+    dispatch(setCurrentCardId(movieCardId));
     setIsMenuModalOpen(false);
   };
 
   const close = () => {
     setIsMenuModalOpen(false);
-    setIdChosenCard(movieCardId);
-  }
+    dispatch(setCurrentCardId(movieCardId));
+  };
 
   const menu = isMenuModalOpen && (
-    <div className='menu-modal'>
+    <div className="menu-modal">
       <ul>
         <li onClick={editMovie}>Edit</li>
         <li onClick={deleteMovie}>Delete</li>
       </ul>
-      <div className='close' onClick={close} />
+      <div className="close" onClick={close} />
     </div>
   );
 

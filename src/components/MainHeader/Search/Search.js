@@ -1,17 +1,19 @@
 import React, { useCallback, useState } from "react";
 import Button from "../../UI-kit/Button/Button";
-import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { searchMovies } from "../../../redux/actions";
 import "./Search.scss";
 
-const Search = ({ setSearchValue }) => {
+const Search = () => {
+  const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
   const handleForm = useCallback(
     (event) => {
       event.preventDefault();
-      setSearchValue(value);
+      dispatch(searchMovies(value));
     },
-    [value, setSearchValue]
+    [value, dispatch]
   );
 
   const handleChange = useCallback(({ target: { value } }) => {
@@ -27,10 +29,6 @@ const Search = ({ setSearchValue }) => {
       </form>
     </div>
   );
-};
-
-Search.propTypes = {
-  setSearchValue: PropTypes.func,
 };
 
 export default Search;

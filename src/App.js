@@ -1,47 +1,32 @@
-import React, { useState } from 'react';
-import { Route, Switch } from 'react-router';
-import HomePage from './pages/HomePage';
-import MoviePage from './pages/MoviePage';
-import Footer from './components/Footer/Footer';
-import MovieFilters from './components/MovieFilters/MovieFilters';
-import MoviesList from './components/MoviesList/MoviesList';
-import MoviesStatistic from './components/MoviesStatistic/MoviesStatistic';
-import MoviesSorting from './components/MoviesSorting/MoviesSorting';
-import CardMovieModal from './components/Modals/CardMovieModal/CardMovieModal';
-import DeleteMovieModal from './components/Modals/DeleteMovieModal/DeleteMovieModal';
-import { mockedData } from './mockedData';
-import { searchMovies } from './utils/searchMovies';
-import { filterMovies } from './utils/filterMovies';
-import { sortMovies } from './utils/sortMovies';
-import { allMovies, newToOld } from './constants';
-import './App.scss';
+import React from "react";
+import { Route, Switch } from "react-router";
+import HomePage from "./pages/HomePage";
+import MoviePage from "./pages/MoviePage";
+import MoviesContainer from "./components/MoviesContainer/MoviesContainer";
+import Footer from "./components/Footer/Footer";
+import MovieFilters from "./components/MovieFilters/MovieFilters";
+import MoviesSorting from "./components/MoviesSorting/MoviesSorting";
+import CardMovieModal from "./components/Modals/CardMovieModal/CardMovieModal";
+import DeleteMovieModal from "./components/Modals/DeleteMovieModal/DeleteMovieModal";
+import "./App.scss";
 
 const App = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [movieFilter, setMovieFilter] = useState(allMovies);
-  const [typeSorting, setTypeSorting] = useState(newToOld);
-
-  const moviesAfterSearching = searchMovies(searchValue, mockedData);
-  const moviesAfterFilter = filterMovies(movieFilter, moviesAfterSearching);
-  const moviesAfterSorting = sortMovies(typeSorting, moviesAfterFilter);
-
   return (
     <>
       <Switch>
-        <Route path='/' exact render={() => <HomePage setSearchValue={setSearchValue} />} />
+        <Route path="/" exact component={HomePage} />
         <Route path={`/movies/:id`} component={MoviePage} />
       </Switch>
 
-      <main className='main-content container'>
-        <div className='sort-and-filters'>
-          <MovieFilters setMovieFilter={setMovieFilter} movieFilter={movieFilter} />
-          <MoviesSorting setTypeSorting={setTypeSorting} typeSorting={typeSorting} />
+      <main className="main-content container">
+        <div className="sort-and-filters">
+          <MovieFilters />
+          <MoviesSorting />
         </div>
 
-        <MoviesStatistic moviesNumber={moviesAfterSorting.length} />
-        <MoviesList movies={moviesAfterSorting} />
+        <MoviesContainer />
       </main>
-      <footer className='footer-content'>
+      <footer className="footer-content">
         <Footer />
       </footer>
       <CardMovieModal />
