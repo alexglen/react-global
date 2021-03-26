@@ -1,5 +1,5 @@
-// import { createSelector } from "reselect";
+import { createSelector } from "reselect";
 
-// const getMovies = (state) => state.movies;
+const getCurrentFilter = (state) => state.filters;
 
-// export const moviesSelector = createSelector(getMovies, ({ movies }) => movies);
+export const filterSelector = createSelector(getCurrentFilter, (filters) => filters.filter);

@@ -6,16 +6,22 @@ import Select from "../../UI-kit/Select/Select";
 import { genres, resetedState, typeAdd, typeEdit } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from "../../../redux/actions";
+import {
+  activeCardSelector,
+  cardModalOpenSelector,
+  currentCardIdSelector,
+  typeEventSelector,
+} from "../../../redux/selectors/modalsSelectors";
 import TextArea from "../../UI-kit/TextArea/TextArea";
 import "./CardMovieModal.scss";
 
 const CardMovieModal = () => {
   const dispatch = useDispatch();
 
-  const { movies } = useSelector(({ movies }) => movies);
-  const { isCardModalOpen, currentCardId, typeEvent } = useSelector(({ modals }) => modals);
-
-  const activeCard = movies.find((card) => card.id === currentCardId);
+  const activeCard = useSelector(activeCardSelector);
+  const isCardModalOpen = useSelector(cardModalOpenSelector);
+  const currentCardId = useSelector(currentCardIdSelector);
+  const typeEvent = useSelector(typeEventSelector);
 
   const initialState = useMemo(
     () => ({

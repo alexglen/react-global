@@ -8,6 +8,9 @@ import { getFilteredMovies } from "../../utils/getFilteredMovies";
 import { getSearchedMovies } from "../../utils/getSearchedMovies";
 import { getSortedMovies } from "../../utils/getSortedMovies";
 import { errorMoviesSelector, loadingMoviesSelector, moviesSelector } from "../../redux/selectors/moviesSelectors";
+import { filterSelector } from "../../redux/selectors/filterSelectors";
+import { seacrhSelector } from "../../redux/selectors/searchSelectors";
+import { sortingSelector } from "../../redux/selectors/sortingSelectors";
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
@@ -15,9 +18,9 @@ const MoviesContainer = () => {
   const error = useSelector(errorMoviesSelector);
   const isLoading = useSelector(loadingMoviesSelector);
 
-  const { filter } = useSelector(({ filters }) => filters);
-  const { searchValue } = useSelector(({ search }) => search);
-  const { sorting } = useSelector(({ sorting }) => sorting);
+  const filter = useSelector(filterSelector);
+  const searchValue = useSelector(seacrhSelector);
+  const sorting = useSelector(sortingSelector);
 
   const moviesAfterFilter = getFilteredMovies(filter, movies);
   const moviesAfterSearch = getSearchedMovies(searchValue, moviesAfterFilter);

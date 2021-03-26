@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { resetedState } from "../../constants";
+import { moviesSelector } from "../../redux/selectors/moviesSelectors";
 import "./MovieDetails.scss";
 
 const MovieDetails = () => {
@@ -9,7 +10,7 @@ const MovieDetails = () => {
 
   const [detailsMovie, setDetailsMovie] = useState(resetedState);
 
-  const { movies } = useSelector(({ movies }) => movies);
+  const movies = useSelector(moviesSelector);
 
   useEffect(() => {
     setDetailsMovie({ ...movies.find((movie) => movie.id === id) });

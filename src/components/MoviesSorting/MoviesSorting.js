@@ -4,13 +4,14 @@ import Menu, { Item as MenuItem } from "rc-menu";
 import { useDispatch, useSelector } from "react-redux";
 import { sortMovies } from "../../redux/actions";
 import { sortingTypes } from "../../constants";
+import { sortingSelector } from "../../redux/selectors/sortingSelectors";
 import "rc-dropdown/assets/index.css";
 import "./MoviesSorting.scss";
 
 const MoviesSorting = () => {
   const dispatch = useDispatch();
 
-  const { sorting } = useSelector(({ sorting }) => sorting);
+  const sorting = useSelector(sortingSelector);
 
   const onSelect = ({ key }) => {
     dispatch(sortMovies(key));
