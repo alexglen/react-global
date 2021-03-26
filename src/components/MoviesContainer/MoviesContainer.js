@@ -7,10 +7,14 @@ import { getMovies } from "../../redux/actions";
 import { getFilteredMovies } from "../../utils/getFilteredMovies";
 import { getSearchedMovies } from "../../utils/getSearchedMovies";
 import { getSortedMovies } from "../../utils/getSortedMovies";
+import { errorMoviesSelector, loadingMoviesSelector, moviesSelector } from "../../redux/selectors/moviesSelectors";
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
-  const { movies, isLoading, error } = useSelector(({ movies }) => movies);
+  const movies = useSelector(moviesSelector);
+  const error = useSelector(errorMoviesSelector);
+  const isLoading = useSelector(loadingMoviesSelector);
+
   const { filter } = useSelector(({ filters }) => filters);
   const { searchValue } = useSelector(({ search }) => search);
   const { sorting } = useSelector(({ sorting }) => sorting);

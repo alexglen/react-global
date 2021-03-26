@@ -13,6 +13,8 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
     "dots-icon-hidden": !isMovieCardWithHover,
   });
 
+  const fullYear = new Date(releaseDate).getFullYear();
+
   return (
     <div
       className="movie"
@@ -31,7 +33,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
       </Link>
       <div className="movie-info">
         <p>{title}</p>
-        <p className="movie-info-year">{new Date(String(releaseDate)).getFullYear()}</p>
+        <p className="movie-info-year">{fullYear}</p>
       </div>
       <p className="movie-genre">{genre}</p>
       <div className={iconClass} onClick={() => setIsMenuModalOpen(true)}></div>

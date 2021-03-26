@@ -1,4 +1,5 @@
 const baseURL = process.env.REACT_APP_API_URL;
+const headers = { "Content-Type": "application/json;charset=utf-8" };
 
 export const fetchMovies = async () => {
   const res = await fetch(`${baseURL}movies.json`);
@@ -10,9 +11,7 @@ export const fetchMovies = async () => {
 export const postMovie = async (data) => {
   return await fetch(`${baseURL}movies.json`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
+    headers,
     body: JSON.stringify(data),
   });
 };
@@ -20,9 +19,7 @@ export const postMovie = async (data) => {
 export const updateMovie = async (data, id) => {
   return await fetch(`${baseURL}movies/${id}.json`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
+    headers,
     body: JSON.stringify(data),
   });
 };
@@ -30,8 +27,6 @@ export const updateMovie = async (data, id) => {
 export const removeMovie = async (id) => {
   return await fetch(`${baseURL}movies/${id}.json`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
+    headers,
   });
 };

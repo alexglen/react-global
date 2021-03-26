@@ -20,20 +20,14 @@ export const moviesReducer = (state = initialState, { type, payload }) => {
     case FETCH_DATA_SUCCESS:
       return { ...state, isLoading: false, movies: payload };
     case FETCH_DATA_ERROR:
-      return { ...state, isLoading: false, error: "Error was found" };
+      return { ...state, isLoading: false, error: "Something was wrong. Try to update your page" };
     case ADD_NEW_MOVIE:
       return { ...state, movies: [...state.movies, payload] };
     case EDIT_MOVIE:
       const editedMovieIndex = state.movies.findIndex((movie) => movie.id === payload.id);
-      const updatedMovieCard = { ...payload.data, id: payload.id };
-      return {
-        ...state,
-        movies: [
-          ...state.movies.slice(0, editedMovieIndex),
-          updatedMovieCard,
-          ...state.movies.slice(editedMovieIndex + 1),
-        ],
-      };
+      const newMovies = [...state.movies];
+      newMovies[editedMovieIndex] = payload.data;
+      return { ...state, movies: newMovies };
     case DELETE_MOVIE:
       return { ...state, movies: state.movies.filter(({ id }) => id !== payload) };
 

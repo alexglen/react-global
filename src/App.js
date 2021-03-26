@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <Switch>
-        <Route path="/" exact render={() => <HomePage />} />
+        <Route path="/" exact component={HomePage} />
         <Route path={`/movies/:id`} component={MoviePage} />
       </Switch>
 
