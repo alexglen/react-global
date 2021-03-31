@@ -1,4 +1,4 @@
-@import '../../colors';
+@import "../../colors";
 
 .modal {
   width: 40%;
@@ -21,7 +21,7 @@
     &:after {
       position: absolute;
       left: 20px;
-      content: ' ';
+      content: " ";
       height: 24px;
       width: 2px;
       background-color: $thirdBackgroundColor;
@@ -39,17 +39,24 @@
   .container {
     width: 90%;
     margin: 0 auto;
-    padding: 15px 0;
     .title {
       text-transform: uppercase;
     }
     .buttons {
       display: flex;
       justify-content: flex-end;
-      margin-top: 15px;
       .reset-button {
         margin-right: 10px;
       }
     }
+  }
+  .error {
+    color: $secondaryColor;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.9em;
+    margin-top: 0;
+    font-weight: 500;
+    font-style: italic;
   }
 }

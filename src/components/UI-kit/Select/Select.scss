@@ -1,11 +1,10 @@
-@import '../../colors';
+@import "../../colors";
 
 .select-component {
   margin: 10px 0;
 
   label {
     span {
-      color: $secondaryColor;
       text-transform: uppercase;
       margin: 5px 3px;
       display: inline-block;

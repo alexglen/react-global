@@ -6,15 +6,7 @@ const TextArea = ({ placeholder, title, type, value, onChange, name }) => {
     <div className="textarea-component">
       <label>
         <span>{title}</span>
-        <textarea
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          name={name}
-          required
-          rows="5"
-        />
+        <textarea type={type} placeholder={placeholder} value={value} onChange={onChange} name={name} rows="4" />
       </label>
     </div>
   );

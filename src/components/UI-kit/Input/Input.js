@@ -6,7 +6,7 @@ const Input = ({ placeholder, title, type, value, onChange, name }) => {
     <div className="input-component">
       <label>
         <span>{title}</span>
-        <input type={type} placeholder={placeholder} value={value} onChange={onChange} name={name} required />
+        <input type={type} placeholder={placeholder} value={value} onChange={onChange} name={name} />
       </label>
     </div>
   );

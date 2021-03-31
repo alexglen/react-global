@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, { useCallback } from "react";
 import Modal from "react-modal";
 import Button from "../../UI-kit/Button/Button";
 import Input from "../../UI-kit/Input/Input";
 import Select from "../../UI-kit/Select/Select";
-import { genres, resetedState, typeAdd, typeEdit } from "../../../constants";
+import { genres, typeAdd, typeEdit } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from "../../../redux/actions";
 import {
@@ -13,75 +13,59 @@ import {
   typeEventSelector,
 } from "../../../redux/selectors/modalsSelectors";
 import TextArea from "../../UI-kit/TextArea/TextArea";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import "./CardMovieModal.scss";
 
 const CardMovieModal = () => {
   const dispatch = useDispatch();
-
   const activeCard = useSelector(activeCardSelector);
   const isCardModalOpen = useSelector(cardModalOpenSelector);
   const currentCardId = useSelector(currentCardIdSelector);
   const typeEvent = useSelector(typeEventSelector);
 
-  const initialState = useMemo(
-    () => ({
-      title: typeEvent === typeEdit ? activeCard?.title : "",
-      releaseDate: typeEvent === typeEdit ? activeCard?.releaseDate : "",
-      img: typeEvent === typeEdit ? activeCard?.img : "",
-      genre: typeEvent === typeEdit ? activeCard?.genre : "",
-      duration: typeEvent === typeEdit ? activeCard?.duration : "",
-      rating: typeEvent === typeEdit ? activeCard?.rating : "",
-      description: typeEvent === typeEdit ? activeCard?.description : "",
-    }),
-    [typeEvent, activeCard]
-  );
+  const initialValues = {
+    title: typeEvent === typeEdit ? activeCard?.title : "",
+    releaseDate: typeEvent === typeEdit ? activeCard?.releaseDate : "",
+    img: typeEvent === typeEdit ? activeCard?.img : "",
+    genre: typeEvent === typeEdit ? activeCard?.genre : "",
+    duration: typeEvent === typeEdit ? activeCard?.duration : "",
+    rating: typeEvent === typeEdit ? activeCard?.rating : "",
+    description: typeEvent === typeEdit ? activeCard?.description : "",
+  };
 
-  const [state, setState] = useState(initialState);
+  const validationSchema = yup.object().shape({
+    title: yup.string().required("Write your name"),
+    releaseDate: yup.string().required("Write release date"),
+    img: yup.string().required("Past the url of the movie"),
+    genre: yup.string().required("Choose a genre"),
+    duration: yup.number().required("Write duration of the movie").typeError("A number is required"),
+    rating: yup.number().required("You forgot to write the raiting").typeError("A number is required"),
+    description: yup.string().required("Write description"),
+  });
 
-  useEffect(() => {
-    if (typeEvent) {
-      setState(initialState);
-    }
-  }, [typeEvent, initialState]);
-
-  const handleChange = useCallback((event) => {
-    setState((state) => ({
-      ...state,
-      [event.target.name]: event.target.value,
-    }));
-  }, []);
-
-  const handleSubmit = useCallback(
-    (event) => {
-      event.preventDefault();
+  const formik = useFormik({
+    initialValues,
+    enableReinitialize: true,
+    onSubmit: (values) => {
       if (typeEvent !== typeEdit) {
-        dispatch(addNewMovie(state));
-        setState(resetedState);
+        dispatch(addNewMovie(values));
+        formik.resetForm();
       } else {
-        dispatch(editMovie(state, currentCardId));
+        dispatch(editMovie(values, currentCardId));
       }
       dispatch(closeCardModal());
     },
-    [state, dispatch, typeEvent, currentCardId]
-  );
-
-  const handleReset = useCallback((event) => {
-    event.preventDefault();
-    setState(resetedState);
-  }, []);
+    validationSchema,
+  });
 
   const closeModal = useCallback(() => {
     dispatch(closeCardModal());
-    setState({
-      title: "",
-      releaseDate: "",
-      url: "",
-      genre: "",
-      overview: "",
-      runtime: "",
-    });
+    formik.resetForm();
     dispatch(setTypeEvent(null));
-  }, [dispatch]);
+  }, [dispatch, formik]);
+
+  const { errors, values, handleChange, handleSubmit, handleReset, touched } = formik;
 
   return (
     <Modal
@@ -94,46 +78,53 @@ const CardMovieModal = () => {
       <>
         <div className="close" onClick={closeModal} />
         <div className="container">
-          <h1 className="title">{typeEvent === typeAdd ? "Add movie" : "Edit movie"}</h1>
+          <h2 className="title">{typeEvent === typeAdd ? "Add movie" : "Edit movie"}</h2>
           <form className="inputs" onSubmit={handleSubmit}>
-            <Input placeholder="Movie title" title="Title" name="title" onChange={handleChange} value={state.title} />
+            <Input placeholder="Movie title" title="Title" name="title" onChange={handleChange} value={values.title} />
+            {touched.title && errors.title && <p className="error">{errors.title}</p>}
             <Input
               placeholder="Select date"
               title="Release date"
               type="date"
               name="releaseDate"
               onChange={handleChange}
-              value={state.releaseDate}
+              value={values.releaseDate}
             />
+            {touched.releaseDate && errors.releaseDate && <p className="error">{errors.releaseDate}</p>}
             <Input
               placeholder="Movie URL here"
               title="Movie Poster"
               name="img"
               onChange={handleChange}
-              value={state.img}
+              value={values.img}
             />
-            <Select title="Genre" options={genres} name="genre" onChange={handleChange} value={state.genre} />
+            {touched.img && errors.img && <p className="error">{errors.img}</p>}
+            <Select title="Genre" options={genres} name="genre" onChange={handleChange} value={values.genre} />
+            {errors.genre && <p className="error">{errors.genre}</p>}
             <Input
               placeholder="Duration"
               title="Duration"
               name="duration"
-              value={state.duration}
+              value={values.duration}
               onChange={handleChange}
             />
+            {touched.duration && errors.duration && <p className="error">{errors.duration}</p>}
             <Input
               placeholder="Rating here"
               title="Rating"
               name="rating"
-              value={state.rating}
+              value={values.rating}
               onChange={handleChange}
             />
+            {touched.rating && errors.rating && <p className="error">{errors.rating}</p>}
             <TextArea
               placeholder="Description here"
               title="Description"
               name="description"
-              value={state.description}
+              value={values.description}
               onChange={handleChange}
             />
+            {touched.description && errors.description && <p className="error">{errors.description}</p>}
             <div className="buttons">
               <div className="reset-button">
                 <Button color="secondary" className="reset-button" type="reset" onClick={handleReset}>

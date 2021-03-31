@@ -1,7 +1,7 @@
 @import "../../colors";
 
 .textarea-component {
-  margin: 10px 0;
+  margin: 7px 0;
   textarea {
     min-height: 36px;
     border-radius: 5px;
@@ -24,7 +24,6 @@
   }
   label {
     span {
-      color: $secondaryColor;
       text-transform: uppercase;
       margin: 5px 3px;
       display: inline-block;
