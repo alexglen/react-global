@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import Button from "../../UI-kit/Button/Button";
 import Input from "../../UI-kit/Input/Input";
 import Select from "../../UI-kit/Select/Select";
+import TextArea from "../../UI-kit/TextArea/TextArea";
 import { genres, typeAdd, typeEdit } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from "../../../redux/actions";
@@ -12,7 +13,6 @@ import {
   currentCardIdSelector,
   typeEventSelector,
 } from "../../../redux/selectors/modalsSelectors";
-import TextArea from "../../UI-kit/TextArea/TextArea";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./CardMovieModal.scss";
@@ -126,11 +126,13 @@ const CardMovieModal = () => {
             />
             {touched.description && errors.description && <p className="error">{errors.description}</p>}
             <div className="buttons">
-              <div className="reset-button">
-                <Button color="secondary" className="reset-button" type="reset" onClick={handleReset}>
-                  Reset
-                </Button>
-              </div>
+              {typeEvent === typeAdd && (
+                <div className="reset-button">
+                  <Button color="secondary" className="reset-button" type="reset" onClick={handleReset}>
+                    Reset
+                  </Button>
+                </div>
+              )}
               <div>
                 <Button color="primary" type="submit">
                   {typeEvent === typeEdit ? "Save" : "Submit"}
