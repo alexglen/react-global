@@ -17,7 +17,7 @@ const MovieDetails = () => {
   }, [id, movies]);
 
   return (
-    <div className="container">
+    <article className="container">
       <div className="movie-details">
         <div className="picture">
           <img src={detailsMovie.img} alt={detailsMovie.title} />
@@ -38,7 +38,7 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

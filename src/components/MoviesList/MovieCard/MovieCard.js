@@ -16,7 +16,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
   const fullYear = new Date(releaseDate).getFullYear();
 
   return (
-    <div
+    <article
       className="movie"
       onMouseEnter={() => setIsMovieCardWithHover(true)}
       onMouseLeave={() => setIsMovieCardWithHover(false)}
@@ -38,7 +38,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
       <p className="movie-genre">{genre}</p>
       <div className={iconClass} onClick={() => setIsMenuModalOpen(true)}></div>
       <MenuMovieCard isMenuModalOpen={isMenuModalOpen} setIsMenuModalOpen={setIsMenuModalOpen} movieCardId={id} />
-    </div>
+    </article>
   );
 };
 
