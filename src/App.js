@@ -1,7 +1,4 @@
 import React from "react";
-import { Route, Switch } from "react-router";
-import HomePage from "./pages/HomePage";
-import MoviePage from "./pages/MoviePage";
 import MoviesContainer from "./components/MoviesContainer/MoviesContainer";
 import Footer from "./components/Footer/Footer";
 import MovieFilters from "./components/MovieFilters/MovieFilters";
@@ -13,11 +10,6 @@ import "./App.scss";
 const App = () => {
   return (
     <>
-      <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path={`/movies/:id`} component={MoviePage} />
-      </Switch>
-
       <main className="main-content container">
         <div className="sort-and-filters">
           <MovieFilters />
