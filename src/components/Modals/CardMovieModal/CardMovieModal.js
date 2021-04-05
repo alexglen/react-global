@@ -24,14 +24,17 @@ const CardMovieModal = () => {
   const currentCardId = useSelector(currentCardIdSelector);
   const typeEvent = useSelector(typeEventSelector);
 
+  const isTypeEdit = typeEvent === typeEdit;
+  const isTypeAdd = typeEvent === typeAdd;
+
   const initialValues = {
-    title: typeEvent === typeEdit ? activeCard?.title : "",
-    releaseDate: typeEvent === typeEdit ? activeCard?.releaseDate : "",
-    img: typeEvent === typeEdit ? activeCard?.img : "",
-    genre: typeEvent === typeEdit ? activeCard?.genre : "",
-    duration: typeEvent === typeEdit ? activeCard?.duration : "",
-    rating: typeEvent === typeEdit ? activeCard?.rating : "",
-    description: typeEvent === typeEdit ? activeCard?.description : "",
+    title: isTypeEdit ? activeCard?.title : "",
+    releaseDate: isTypeEdit ? activeCard?.releaseDate : "",
+    img: isTypeEdit ? activeCard?.img : "",
+    genre: isTypeEdit ? activeCard?.genre : "",
+    duration: isTypeEdit ? activeCard?.duration : "",
+    rating: isTypeEdit ? activeCard?.rating : "",
+    description: isTypeEdit ? activeCard?.description : "",
   };
 
   const validationSchema = yup.object().shape({
@@ -78,7 +81,7 @@ const CardMovieModal = () => {
       <>
         <div className="close" onClick={closeModal} />
         <div className="container">
-          <h2 className="title">{typeEvent === typeAdd ? "Add movie" : "Edit movie"}</h2>
+          <h2 className="title">{isTypeAdd ? "Add movie" : "Edit movie"}</h2>
           <form className="inputs" onSubmit={handleSubmit}>
             <Input placeholder="Movie title" title="Title" name="title" onChange={handleChange} value={values.title} />
             {touched.title && errors.title && <p className="error">{errors.title}</p>}
@@ -126,7 +129,7 @@ const CardMovieModal = () => {
             />
             {touched.description && errors.description && <p className="error">{errors.description}</p>}
             <div className="buttons">
-              {typeEvent === typeAdd && (
+              {isTypeAdd && (
                 <div className="reset-button">
                   <Button color="secondary" className="reset-button" type="reset" onClick={handleReset}>
                     Reset
