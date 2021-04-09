@@ -1,17 +1,21 @@
 import React, { useCallback, useState } from "react";
 import Button from "../../UI-kit/Button/Button";
 import { useDispatch } from "react-redux";
-import { searchMovies } from "../../../redux/actions";
+import { lookMovies } from "../../../redux/actions";
 import "./Search.scss";
+import { useHistory } from "react-router";
 
 const Search = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
+  const { push } = useHistory();
+
   const handleForm = useCallback(
     (event) => {
       event.preventDefault();
-      dispatch(searchMovies(value));
+      dispatch(lookMovies(value));
+      push(`/search?Search=${value}`);
     },
     [value, dispatch]
   );

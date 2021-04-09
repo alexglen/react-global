@@ -1,4 +1,4 @@
-import { fetchMovies, updateMovie, removeMovie, postMovie } from "../../actions";
+import { fetchMovies, updateMovie, removeMovie, postMovie, searchMovies } from "../../actions";
 import {
   ADD_NEW_MOVIE,
   APPLY_FILTER,
@@ -24,6 +24,28 @@ export const getMovies = () => {
     });
 
     fetchMovies()
+      .then((body) => {
+        dispatch({
+          type: FETCH_DATA_SUCCESS,
+          payload: Object.keys(body).map((id) => ({ id, ...body[id] })),
+        });
+      })
+      .catch((e) => {
+        dispatch({
+          type: FETCH_DATA_ERROR,
+          payload: e,
+        });
+      });
+  };
+};
+
+export const lookMovies = (search) => {
+  return async (dispatch) => {
+    dispatch({
+      type: FETCH_DATA_START,
+    });
+
+    searchMovies(search)
       .then((body) => {
         dispatch({
           type: FETCH_DATA_SUCCESS,
@@ -81,7 +103,6 @@ export const deleteMovie = (id) => {
 
 export const filteredMovies = (filter) => ({ type: APPLY_FILTER, filter });
 export const sortMovies = (typeOfSorting) => ({ type: APPLY_SORTING, typeOfSorting });
-export const searchMovies = (value) => ({ type: APPLY_SEARCH, value });
 
 export const openDeleteModal = () => ({ type: OPEN_DELETE_MODAL });
 export const closeDeleteModal = () => ({ type: CLOSE_DELETE_MODAL });

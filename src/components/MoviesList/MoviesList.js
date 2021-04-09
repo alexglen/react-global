@@ -13,7 +13,7 @@ const MoviesList = ({ movies }) => {
           ))}
         </div>
       ) : (
-        <h2 className="empty-list">No Movie Found</h2>
+        <h2 className="empty-list">No Movies Found</h2>
       )}
     </>
   );

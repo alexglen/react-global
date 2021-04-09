@@ -8,6 +8,15 @@ export const fetchMovies = async () => {
   }
 };
 
+export const searchMovies = async (search) => {
+  const res = await fetch(`${baseURL}movies.json`);
+  if (res.ok) {
+    const body = await res.json();
+    const movies = Object.keys(body).map((id) => ({ id, ...body[id] }));
+    return movies.filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
+  }
+};
+
 export const postMovie = async (data) => {
   return await fetch(`${baseURL}movies.json`, {
     method: "POST",
