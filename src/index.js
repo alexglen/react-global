@@ -8,13 +8,13 @@ import Pages from "./pages/Pages";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ErrorBoundry>
+    <ErrorBoundry>
+      <BrowserRouter>
         <Provider store={store}>
           <Pages />
         </Provider>
-      </ErrorBoundry>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ErrorBoundry>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -4,8 +4,8 @@ import Search from "./Search/Search";
 import { typeAdd } from "./../../constants";
 import { useDispatch } from "react-redux";
 import { openCardModal, setTypeEvent } from "../../redux/actions";
-import "./MainHeader.scss";
 import { NavLink } from "react-router-dom";
+import "./MainHeader.scss";
 
 const MainHeader = () => {
   const dispatch = useDispatch();

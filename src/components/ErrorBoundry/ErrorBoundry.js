@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default class ErrorBoundry extends React.Component {
   state = { hasError: false };
 
-  componentDidCatch(error) {
+  componentDidCatch() {
     this.setState({ hasError: true });
   }
 

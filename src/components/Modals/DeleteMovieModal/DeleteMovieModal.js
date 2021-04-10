@@ -11,14 +11,14 @@ const DeleteMovieModal = () => {
   const isDeleteModalOpen = useSelector(deleteModalOpenSelector);
   const currentCardId = useSelector(currentCardIdSelector);
 
-  const history = useHistory();
+  const { push } = useHistory();
 
   const dispatch = useDispatch();
 
   const deleteMovieCard = () => {
     dispatch(deleteMovie(currentCardId));
     dispatch(closeDeleteModal());
-    history.push("/");
+    push("/");
   };
 
   const closeModal = () => dispatch(closeDeleteModal());

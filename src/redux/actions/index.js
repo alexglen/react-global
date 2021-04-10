@@ -18,11 +18,14 @@ import {
 
 export const getMovies = () => {
   return async (dispatch) => {
+    dispatch({
+      type: FETCH_DATA_START,
+    });
     fetchMovies()
       .then((body) => {
         dispatch({
           type: FETCH_DATA_SUCCESS,
-          payload: Object.keys(body).map((id) => ({ id, ...body[id] })),
+          payload: body,
         });
       })
       .catch((e) => {

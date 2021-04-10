@@ -4,7 +4,8 @@ const headers = { "Content-Type": "application/json;charset=utf-8" };
 export const fetchMovies = async () => {
   const res = await fetch(`${baseURL}movies.json`);
   if (res.ok) {
-    return await res.json();
+    const body = await res.json();
+    return Object.keys(body).map((id) => ({ id, ...body[id] }));
   }
 };
 
