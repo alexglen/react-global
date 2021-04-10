@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import Button from "../../UI-kit/Button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { lookMovies } from "../../../redux/actions";
-import "./Search.scss";
 import { useHistory } from "react-router";
+import "./Search.scss";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -15,9 +15,10 @@ const Search = () => {
     (event) => {
       event.preventDefault();
       dispatch(lookMovies(value));
+
       push(`/search?Search=${value}`);
     },
-    [value, dispatch]
+    [value, dispatch, push]
   );
 
   const handleChange = useCallback(({ target: { value } }) => {

@@ -2,7 +2,6 @@ import { fetchMovies, updateMovie, removeMovie, postMovie, searchMovies } from "
 import {
   ADD_NEW_MOVIE,
   APPLY_FILTER,
-  APPLY_SEARCH,
   APPLY_SORTING,
   CLOSE_CARD_MODAL,
   CLOSE_DELETE_MODAL,
@@ -19,10 +18,6 @@ import {
 
 export const getMovies = () => {
   return async (dispatch) => {
-    dispatch({
-      type: FETCH_DATA_START,
-    });
-
     fetchMovies()
       .then((body) => {
         dispatch({
@@ -41,15 +36,11 @@ export const getMovies = () => {
 
 export const lookMovies = (search) => {
   return async (dispatch) => {
-    dispatch({
-      type: FETCH_DATA_START,
-    });
-
     searchMovies(search)
       .then((body) => {
         dispatch({
           type: FETCH_DATA_SUCCESS,
-          payload: Object.keys(body).map((id) => ({ id, ...body[id] })),
+          payload: body,
         });
       })
       .catch((e) => {

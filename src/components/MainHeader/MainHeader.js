@@ -5,6 +5,7 @@ import { typeAdd } from "./../../constants";
 import { useDispatch } from "react-redux";
 import { openCardModal, setTypeEvent } from "../../redux/actions";
 import "./MainHeader.scss";
+import { NavLink } from "react-router-dom";
 
 const MainHeader = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,10 @@ const MainHeader = () => {
   return (
     <div className="main-header">
       <div className="header container">
-        <Logo />
+        <NavLink to="/">
+          <Logo />
+        </NavLink>
+
         <div className="add-button">
           <button onClick={openAddMovieModal}>+ Add Movie</button>
         </div>

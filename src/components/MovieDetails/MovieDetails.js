@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router";
+import { Redirect, useHistory, useLocation } from "react-router";
 import { resetedState } from "../../constants";
 import { moviesSelector } from "../../redux/selectors/moviesSelectors";
 import "./MovieDetails.scss";
@@ -15,12 +15,11 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const movie = movies.find((movie) => movie.id === id);
+
     if (movie) {
       setDetailsMovie({ ...movie });
-    } else {
-      push("/error");
     }
-  }, [id, movies, push]);
+  }, [id, movies]);
 
   return (
     <article className="container">

@@ -1,17 +1,21 @@
 import React from "react";
+import { useHistory } from "react-router";
 import Button from "../UI-kit/Button/Button";
 import "./EmptyMoviesList.scss";
 
 const EmptyMoviesList = () => {
+  const { push } = useHistory();
   return (
     <div className="empty-movies">
       <h2 className="title">No Movies Found</h2>
-      <p className="text">
-        Unfortunately, your search returned no results... What to do? Try changing your request. Many films have
-        multiple titles.
-      </p>
+      <div className="text">
+        <p>Unfortunately, your search returned no results...</p>
+        <p>What to do? Try changing your request. Many films have multiple titles.</p>
+      </div>
       <div className="button">
-        <Button color="primary">Search again</Button>
+        <Button color="primary" onClick={() => push("/")}>
+          Search again
+        </Button>
       </div>
     </div>
   );

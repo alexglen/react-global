@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MoviesContainer from "./components/MoviesContainer/MoviesContainer";
 import Footer from "./components/Footer/Footer";
 import MovieFilters from "./components/MovieFilters/MovieFilters";
