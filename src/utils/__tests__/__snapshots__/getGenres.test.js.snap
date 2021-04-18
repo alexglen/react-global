@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getGenres  1`] = `
+Array [
+  "Drama",
+  "Fantasy",
+  "Adventures",
+  "Comedy",
+  "Thriller",
+]
+`;

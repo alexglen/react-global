@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getSortedMovies (type: "") 1`] = `
+Array [
+  Object {
+    "genre": "Drama, Fantasy, Adventures",
+    "id": "2",
+    "img": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b0f70f29979965.560d298403bc7.jpg",
+    "releaseDate": 2014,
+    "title": "Interstellar",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "4",
+    "img": "https://pbs.twimg.com/media/EHb-eADX4AAP_6T.jpg",
+    "releaseDate": 2009,
+    "title": "Shutter Island",
+  },
+  Object {
+    "genre": "Fantasy, Thriller",
+    "id": "5",
+    "img": "https://cinelog.net/wp-content/uploads/2020/04/aOIuZAjPaRIE6CMzbazvcHuHXDc-768x1152.jpg",
+    "releaseDate": 1999,
+    "title": "The Matrix",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "6",
+    "img": "https://i10.fotocdn.net/s124/a80214fc2d561294/user_xl/2825091898.jpg",
+    "releaseDate": 1997,
+    "title": "The brother",
+  },
+  Object {
+    "genre": "Drama, Fantasy",
+    "id": "1",
+    "img": "https://pbs.twimg.com/media/ELeJbCYXkAE18WI.jpg",
+    "releaseDate": 1994,
+    "title": "Green mile",
+  },
+  Object {
+    "genre": "Drama, Comedy",
+    "id": "3",
+    "img": "https://pbs.twimg.com/media/EK7Tf-IXkAErCgW.jpg",
+    "releaseDate": 1994,
+    "title": "Forrest Gump",
+  },
+]
+`;
+
+exports[`getSortedMovies (type: "decRating") 1`] = `
+Array [
+  Object {
+    "genre": "Drama, Fantasy, Adventures",
+    "id": "2",
+    "img": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b0f70f29979965.560d298403bc7.jpg",
+    "releaseDate": 2014,
+    "title": "Interstellar",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "4",
+    "img": "https://pbs.twimg.com/media/EHb-eADX4AAP_6T.jpg",
+    "releaseDate": 2009,
+    "title": "Shutter Island",
+  },
+  Object {
+    "genre": "Fantasy, Thriller",
+    "id": "5",
+    "img": "https://cinelog.net/wp-content/uploads/2020/04/aOIuZAjPaRIE6CMzbazvcHuHXDc-768x1152.jpg",
+    "releaseDate": 1999,
+    "title": "The Matrix",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "6",
+    "img": "https://i10.fotocdn.net/s124/a80214fc2d561294/user_xl/2825091898.jpg",
+    "releaseDate": 1997,
+    "title": "The brother",
+  },
+  Object {
+    "genre": "Drama, Comedy",
+    "id": "3",
+    "img": "https://pbs.twimg.com/media/EK7Tf-IXkAErCgW.jpg",
+    "releaseDate": 1994,
+    "title": "Forrest Gump",
+  },
+  Object {
+    "genre": "Drama, Fantasy",
+    "id": "1",
+    "img": "https://pbs.twimg.com/media/ELeJbCYXkAE18WI.jpg",
+    "releaseDate": 1994,
+    "title": "Green mile",
+  },
+]
+`;
+
+exports[`getSortedMovies (type: "incRating") 1`] = `
+Array [
+  Object {
+    "genre": "Drama, Fantasy, Adventures",
+    "id": "2",
+    "img": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b0f70f29979965.560d298403bc7.jpg",
+    "releaseDate": 2014,
+    "title": "Interstellar",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "4",
+    "img": "https://pbs.twimg.com/media/EHb-eADX4AAP_6T.jpg",
+    "releaseDate": 2009,
+    "title": "Shutter Island",
+  },
+  Object {
+    "genre": "Fantasy, Thriller",
+    "id": "5",
+    "img": "https://cinelog.net/wp-content/uploads/2020/04/aOIuZAjPaRIE6CMzbazvcHuHXDc-768x1152.jpg",
+    "releaseDate": 1999,
+    "title": "The Matrix",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "6",
+    "img": "https://i10.fotocdn.net/s124/a80214fc2d561294/user_xl/2825091898.jpg",
+    "releaseDate": 1997,
+    "title": "The brother",
+  },
+  Object {
+    "genre": "Drama, Comedy",
+    "id": "3",
+    "img": "https://pbs.twimg.com/media/EK7Tf-IXkAErCgW.jpg",
+    "releaseDate": 1994,
+    "title": "Forrest Gump",
+  },
+  Object {
+    "genre": "Drama, Fantasy",
+    "id": "1",
+    "img": "https://pbs.twimg.com/media/ELeJbCYXkAE18WI.jpg",
+    "releaseDate": 1994,
+    "title": "Green mile",
+  },
+]
+`;
+
+exports[`getSortedMovies (type: "newToOld") 1`] = `
+Array [
+  Object {
+    "genre": "Drama, Fantasy, Adventures",
+    "id": "2",
+    "img": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b0f70f29979965.560d298403bc7.jpg",
+    "releaseDate": 2014,
+    "title": "Interstellar",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "4",
+    "img": "https://pbs.twimg.com/media/EHb-eADX4AAP_6T.jpg",
+    "releaseDate": 2009,
+    "title": "Shutter Island",
+  },
+  Object {
+    "genre": "Fantasy, Thriller",
+    "id": "5",
+    "img": "https://cinelog.net/wp-content/uploads/2020/04/aOIuZAjPaRIE6CMzbazvcHuHXDc-768x1152.jpg",
+    "releaseDate": 1999,
+    "title": "The Matrix",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "6",
+    "img": "https://i10.fotocdn.net/s124/a80214fc2d561294/user_xl/2825091898.jpg",
+    "releaseDate": 1997,
+    "title": "The brother",
+  },
+  Object {
+    "genre": "Drama, Comedy",
+    "id": "3",
+    "img": "https://pbs.twimg.com/media/EK7Tf-IXkAErCgW.jpg",
+    "releaseDate": 1994,
+    "title": "Forrest Gump",
+  },
+  Object {
+    "genre": "Drama, Fantasy",
+    "id": "1",
+    "img": "https://pbs.twimg.com/media/ELeJbCYXkAE18WI.jpg",
+    "releaseDate": 1994,
+    "title": "Green mile",
+  },
+]
+`;
+
+exports[`getSortedMovies (type: "oldToNew") 1`] = `
+Array [
+  Object {
+    "genre": "Drama, Fantasy",
+    "id": "1",
+    "img": "https://pbs.twimg.com/media/ELeJbCYXkAE18WI.jpg",
+    "releaseDate": 1994,
+    "title": "Green mile",
+  },
+  Object {
+    "genre": "Drama, Comedy",
+    "id": "3",
+    "img": "https://pbs.twimg.com/media/EK7Tf-IXkAErCgW.jpg",
+    "releaseDate": 1994,
+    "title": "Forrest Gump",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "6",
+    "img": "https://i10.fotocdn.net/s124/a80214fc2d561294/user_xl/2825091898.jpg",
+    "releaseDate": 1997,
+    "title": "The brother",
+  },
+  Object {
+    "genre": "Fantasy, Thriller",
+    "id": "5",
+    "img": "https://cinelog.net/wp-content/uploads/2020/04/aOIuZAjPaRIE6CMzbazvcHuHXDc-768x1152.jpg",
+    "releaseDate": 1999,
+    "title": "The Matrix",
+  },
+  Object {
+    "genre": "Drama, Thriller",
+    "id": "4",
+    "img": "https://pbs.twimg.com/media/EHb-eADX4AAP_6T.jpg",
+    "releaseDate": 2009,
+    "title": "Shutter Island",
+  },
+  Object {
+    "genre": "Drama, Fantasy, Adventures",
+    "id": "2",
+    "img": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/b0f70f29979965.560d298403bc7.jpg",
+    "releaseDate": 2014,
+    "title": "Interstellar",
+  },
+]
+`;
