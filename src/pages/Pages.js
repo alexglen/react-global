@@ -11,7 +11,7 @@ const EmptyMoviesListPage = lazy(() => import("./EmptyMoviesListPage"));
 
 const Pages = () => {
   const movies = useSelector(moviesSelector);
-  const isMoviesEmpty = !movies.length;
+  const isMoviesEmpty = !movies?.length;
   return (
     <Suspense fallback={<Spinner />}>
       <Switch>

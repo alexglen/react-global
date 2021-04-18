@@ -1,11 +1,13 @@
 const baseURL = process.env.REACT_APP_API_URL;
 const headers = { "Content-Type": "application/json;charset=utf-8" };
 
+const changeDataFormat = (body) => Object.keys(body).map((id) => ({ id, ...body[id] }));
+
 export const fetchMovies = async () => {
   const res = await fetch(`${baseURL}movies.json`);
   if (res.ok) {
     const body = await res.json();
-    return Object.keys(body).map((id) => ({ id, ...body[id] }));
+    return changeDataFormat(body);
   }
 };
 
@@ -13,7 +15,7 @@ export const searchMovies = async (search) => {
   const res = await fetch(`${baseURL}movies.json`);
   if (res.ok) {
     const body = await res.json();
-    const movies = Object.keys(body).map((id) => ({ id, ...body[id] }));
+    const movies = changeDataFormat(body);
     return movies.filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
   }
 };
