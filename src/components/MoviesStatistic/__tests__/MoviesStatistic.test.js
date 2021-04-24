@@ -2,15 +2,14 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { create } from "react-test-renderer";
 import store from "../../../redux/store";
-import { mockedData } from "../../../utils/mockedData";
-import MoviesList from "../MoviesList";
+import MoviesStatistic from "../MoviesStatistic";
 
-describe("MoviesList", () => {
-  test("render <MoviesList movies={mockedData} />", () => {
+describe("MoviesStatistic", () => {
+  test("render <MoviesStatistic />", () => {
     const component = create(
       <Provider store={store}>
         <BrowserRouter>
-          <MoviesList movies={mockedData} />
+          <MoviesStatistic moviesNumber={13} />
         </BrowserRouter>
       </Provider>
     );

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuMovieCard render <MenuMovieCard /> 1`] = `null`;
+
+exports[`MenuMovieCard render <MenuMovieCard /> 2`] = `
+<div
+  className="menu-modal"
+>
+  <ul>
+    <li
+      onClick={[Function]}
+    >
+      Edit
+    </li>
+    <li
+      onClick={[Function]}
+    >
+      Delete
+    </li>
+  </ul>
+  <div
+    className="close"
+    onClick={[Function]}
+  />
+</div>
+`;
