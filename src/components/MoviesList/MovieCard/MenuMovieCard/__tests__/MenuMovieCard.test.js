@@ -4,30 +4,24 @@ import MenuMovieCard from "../MenuMovieCard";
 import { create } from "react-test-renderer";
 import { Provider } from "react-redux";
 
-describe("MenuMovieCard", () => {
+const getComponent = (isMenuModalOpen = false) => {
+  return create(
+    <Provider store={store}>
+      <BrowserRouter>
+        <MenuMovieCard isMenuModalOpen setIsMenuModalOpen={() => jest.fn()} movieCardId="-MWJn2JOvxRpVKrK0Ye3" />
+      </BrowserRouter>
+    </Provider>
+  );
+};
+
+describe("MenuMovieCard was rendered", () => {
   test("render <MenuMovieCard />", () => {
-    const component = create(
-      <Provider store={store}>
-        <BrowserRouter>
-          <MenuMovieCard
-            isMenuModalOpen={false}
-            setIsMenuModalOpen={() => jest.fn()}
-            movieCardId="-MWJn2JOvxRpVKrK0Ye3"
-          />
-        </BrowserRouter>
-      </Provider>
-    );
+    const component = getComponent();
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   test("render <MenuMovieCard />", () => {
-    const component = create(
-      <Provider store={store}>
-        <BrowserRouter>
-          <MenuMovieCard isMenuModalOpen setIsMenuModalOpen={() => jest.fn()} movieCardId="-MWJn2JOvxRpVKrK0Ye3" />
-        </BrowserRouter>
-      </Provider>
-    );
+    const component = getComponent(true);
     expect(component.toJSON()).toMatchSnapshot();
   });
 });
