@@ -1,0 +1,24 @@
+@import '../../colors';
+
+.search {
+  width: 80%;
+  margin: 0 auto;
+  .title {
+    text-transform: uppercase;
+    margin: 25px 0;
+    color: $thirdBackgroundColor;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    input {
+      height: 40px;
+      border-radius: 5px;
+      background-color: $inputBackgroundColor;
+      color: $primaryColor;
+      flex: 1 0 auto;
+      margin-right: 15px;
+    }
+  }
+}

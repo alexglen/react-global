@@ -1,0 +1,58 @@
+@import '../colors';
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  .details {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+
+    .picture {
+      width: 25%;
+      flex: 1 0 auto;
+      img {
+        width: 100%;
+      }
+    }
+
+    .info {
+      margin-left: 4rem;
+      margin-top: 2rem;
+      .titles {
+        display: flex;
+        align-items: center;
+
+        .rating {
+          font-size: 2rem;
+          color: $ratingColor;
+          border: 1px solid white;
+          border-radius: 50%;
+          padding: 15px;
+          margin-left: 2rem;
+        }
+        .title {
+          font-size: 3.5rem;
+        }
+      }
+      .infoExtra {
+        .infoAwards {
+          margin: 1rem 0;
+        }
+        .duration {
+          display: flex;
+          font-size: 1.75rem;
+          color: $secondaryColor;
+          margin: 1rem 0;
+          p:last-child {
+            margin-left: 2rem;
+          }
+        }
+      }
+      .description {
+        line-height: 1.75;
+      }
+    }
+  }
+}
