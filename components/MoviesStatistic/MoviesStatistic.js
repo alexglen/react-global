@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import './MoviesStatistic.module.scss';
+import styles from './MoviesStatistic.module.scss';
 
 const MoviesStatistic = ({ moviesNumber }) => {
   return (
-    <div className='movies-statistic'>
+    <div className={styles.statistic}>
       <p>
         <span>{moviesNumber}</span> movies found
       </p>

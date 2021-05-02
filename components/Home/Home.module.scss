@@ -1,19 +1,20 @@
-@import './components/colors';
+@import '../colors';
 
-.header-content {
-  height: 300px;
-}
+.container {
+  background-color: $backgroundColor;
+  color: $primaryColor;
 
-.main {
-  min-height: calc(100vh - 340px);
-  width: 90%;
-  margin: 0 auto;
+  .main {
+    min-height: calc(100vh - 269px);
+    width: 90%;
+    margin: 0 auto;
 
-  .filters {
-    display: flex;
-    justify-content: space-between;
+    .filters {
+      display: flex;
+      justify-content: space-between;
+    }
   }
-}
-.footer {
-  height: 40px;
+  .footer {
+    height: 40px;
+  }
 }

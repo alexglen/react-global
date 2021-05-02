@@ -1,4 +1,4 @@
-const baseURL = process.env.REACT_APP_API_URL;
+const baseURL = 'https://netflix-fbbe6-default-rtdb.firebaseio.com/';
 const headers = { 'Content-Type': 'application/json;charset=utf-8' };
 
 const changeDataFormat = (body) => Object.keys(body).map((id) => ({ id, ...body[id] }));

@@ -6,27 +6,27 @@
   cursor: pointer;
   margin-bottom: 30px;
 
-  &-img {
+  .img {
     img {
       width: 100%;
     }
   }
-  &-info {
+  .info {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    &-year {
+    .year {
       border: 1px solid $borderColor;
       padding: 3px 12px;
       border-radius: 5px;
     }
   }
-  &-genre {
+  .genre {
     margin: 0;
     font-size: 0.75em;
     font-weight: 300;
   }
-  .dots-icon {
+  .dotsIcon {
     width: 36px;
     height: 36px;
     background-color: $backgroundColor;

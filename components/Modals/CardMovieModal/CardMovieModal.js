@@ -4,17 +4,17 @@ import Button from '../../UI-kit/Button/Button';
 import Input from '../../UI-kit/Input/Input';
 import Select from '../../UI-kit/Select/Select';
 import TextArea from '../../UI-kit/TextArea/TextArea';
-import { genres, typeAdd, typeEdit } from '../../../types';
+import { genres, typeAdd, typeEdit } from '../../../constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from '../../../redux/actions';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import {
   activeCardSelector,
   cardModalOpenSelector,
   currentCardIdSelector,
   typeEventSelector,
-} from '../../../redux/selectors/modalsSelectors';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
+} from '../../../selectors/modalsSelectors';
+import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from '../../../actions';
 import styles from './CardMovieModal.module.scss';
 
 const CardMovieModal = () => {
@@ -151,7 +151,7 @@ const CardMovieModal = () => {
             {touched.description && errors.description && (
               <p className={styles.error}>{errors.description}</p>
             )}
-            <div className='buttons'>
+            <div className={styles.buttons}>
               {isTypeAdd && (
                 <div className={styles.reset}>
                   <Button

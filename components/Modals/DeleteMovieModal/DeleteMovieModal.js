@@ -1,26 +1,19 @@
 import Modal from 'react-modal';
 import Button from '../../UI-kit/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeDeleteModal, deleteMovie } from '../../../redux/actions';
-// import { useHistory } from 'react-router';
-import {
-  currentCardIdSelector,
-  deleteModalOpenSelector,
-} from '../../../redux/selectors/modalsSelectors';
+import { currentCardIdSelector, deleteModalOpenSelector } from '../../../selectors/modalsSelectors';
+import { closeDeleteModal, deleteMovie } from '../../../actions';
 import styles from './DeleteMovieModal.module.scss';
 
 const DeleteMovieModal = () => {
   const isDeleteModalOpen = useSelector(deleteModalOpenSelector);
   const currentCardId = useSelector(currentCardIdSelector);
 
-  // const { push } = useHistory();
-
   const dispatch = useDispatch();
 
   const deleteMovieCard = () => {
     dispatch(deleteMovie(currentCardId));
     dispatch(closeDeleteModal());
-    // push('/');
   };
 
   const closeModal = () => dispatch(closeDeleteModal());

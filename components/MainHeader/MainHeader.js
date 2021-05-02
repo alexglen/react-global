@@ -4,6 +4,7 @@ import { typeAdd } from '../../constants';
 import { useDispatch } from 'react-redux';
 import { openCardModal, setTypeEvent } from '../../actions';
 import styles from './MainHeader.module.scss';
+import Link from 'next/link';
 
 const MainHeader = () => {
   const dispatch = useDispatch();
@@ -16,9 +17,9 @@ const MainHeader = () => {
   return (
     <div className={styles.header}>
       <div className={styles.subheader}>
-        {/* <NavLink to='/'> */}
-        <Logo />
-        {/* </NavLink> */}
+        <Link href={'/'}>
+          <Logo />
+        </Link>
 
         <div className={styles.button}>
           <button onClick={openAddMovieModal}>+ Add Movie</button>

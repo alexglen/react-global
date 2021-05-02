@@ -3,10 +3,10 @@
 .sorting {
   display: flex;
   align-items: center;
-  &-title {
+  .title {
     opacity: 0.7;
   }
-  &-type {
+  .type {
     display: flex;
     align-items: center;
     margin-left: 15px;

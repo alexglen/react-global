@@ -1,18 +1,18 @@
 import MovieCard from './MovieCard/MovieCard';
 import PropTypes from 'prop-types';
-import './MoviesList.module.scss';
+import styles from './MoviesList.module.scss';
 
 const MoviesList = ({ movies }) => {
   return (
     <>
       {movies.length ? (
-        <div className='movies-list'>
+        <div className={styles.list}>
           {movies.map((movie) => (
             <MovieCard {...movie} key={movie.id} />
           ))}
         </div>
       ) : (
-        <h2 className='empty-list'>No Movies Found</h2>
+        <h2 className={styles.empty}>No Movies Found</h2>
       )}
     </>
   );

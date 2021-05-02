@@ -1,40 +1,33 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import MenuMovieCard from './MenuMovieCard/MenuMovieCard';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import './MovieCard.module.scss';
+import Link from 'next/link';
+import styles from './MovieCard.module.scss';
 
 const MovieCard = ({ img, title, releaseDate, genre, id }) => {
   const [isMovieCardWithHover, setIsMovieCardWithHover] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
-  const iconClass = classnames('dots-icon', {
-    'dots-icon-hidden': !isMovieCardWithHover,
-  });
-
   const fullYear = new Date(releaseDate).getFullYear();
 
   return (
     <article
-      className='movie'
+      className={styles.movie}
       onMouseEnter={() => setIsMovieCardWithHover(true)}
       onMouseLeave={() => setIsMovieCardWithHover(false)}>
-      <Link
-        to={{
-          pathname: `/movies/${title.replace(/\s/g, '')}`,
-          id,
-        }}>
-        <div className='movie-img'>
+      <Link href={`/movies/${encodeURIComponent(id)}`} id='1'>
+        <div className={styles.img}>
           <img src={img} alt={title} />
         </div>
       </Link>
-      <div className='movie-info'>
+      <div className={styles.info}>
         <p>{title}</p>
-        <p className='movie-info-year'>{fullYear}</p>
+        <p className={styles.year}>{fullYear}</p>
       </div>
-      <p className='movie-genre'>{genre}</p>
-      <div className={iconClass} onClick={() => setIsMenuModalOpen(true)}></div>
+      <p className={styles.genre}>{genre}</p>
+      <div
+        className={isMovieCardWithHover ? styles.dotsIcon : undefined}
+        onClick={() => setIsMenuModalOpen(true)}></div>
       <MenuMovieCard
         isMenuModalOpen={isMenuModalOpen}
         setIsMenuModalOpen={setIsMenuModalOpen}

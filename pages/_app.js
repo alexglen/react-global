@@ -1,28 +1,20 @@
-import 'nprogress/nprogress.css';
-import '../styles/globals.scss';
-
-import { Provider } from 'react-redux';
+import ErrorBoundry from '../components/ErrorBoundry/ErrorBoundry';
+import { wrapper } from '../store';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import ErrorBoundry from '../components/ErrorBoundry/ErrorBoundry';
-import store from '../store';
+import 'nprogress/nprogress.css';
+import '../styles/globals.scss';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-if (typeof window === 'undefined') {
-  global.window = {};
-}
-
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ErrorBoundry>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Component {...pageProps} />
     </ErrorBoundry>
   );
 };
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

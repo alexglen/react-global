@@ -13,6 +13,19 @@ const initialState = {
   error: null,
 };
 
+const reducer = (state, action) => {
+  if (action.type === HYDRATE) {
+    const nextState = {
+      ...state,
+      ...action.payload,
+    };
+    if (state.count.count) nextState.count.count = state.count.count;
+    return nextState;
+  } else {
+    return combinedReducer(state, action);
+  }
+};
+
 export const moviesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_DATA_START:

@@ -1,13 +1,13 @@
-import { typeEdit } from '../../../../types';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { typeEdit } from '../../../../constants';
 import {
   openCardModal,
   openDeleteModal,
   setCurrentCardId,
   setTypeEvent,
-} from '../../../../redux/actions';
-import './MenuMovieCard.module.scss';
+} from '../../../../actions';
+import styles from './MenuMovieCard.module.scss';
 
 const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => {
   const dispatch = useDispatch();
@@ -31,12 +31,12 @@ const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => 
   };
 
   const menu = isMenuModalOpen && (
-    <div className='menu-modal'>
+    <div className={styles.menu}>
       <ul>
         <li onClick={editMovie}>Edit</li>
         <li onClick={deleteMovie}>Delete</li>
       </ul>
-      <div className='close' onClick={close} />
+      <div className={styles.close} onClick={close} />
     </div>
   );
 

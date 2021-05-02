@@ -36,15 +36,13 @@
           font-size: 3.5rem;
         }
       }
-      .infoExtra {
-        .infoAwards {
-          margin: 1rem 0;
-        }
+      .extra {
         .duration {
           display: flex;
           font-size: 1.75rem;
           color: $secondaryColor;
           margin: 1rem 0;
+          align-items: center;
           p:last-child {
             margin-left: 2rem;
           }

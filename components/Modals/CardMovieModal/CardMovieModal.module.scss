@@ -3,8 +3,11 @@
 .modal {
   width: 40%;
   margin: 0 auto;
+  margin-top: 40px;
   background-color: $backgroundColor;
   position: relative;
+  color: $primaryColor;
+  padding: 20px;
 
   .close {
     cursor: pointer;

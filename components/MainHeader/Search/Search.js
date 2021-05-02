@@ -2,20 +2,21 @@ import { useCallback, useState } from 'react';
 import Button from '../../UI-kit/Button/Button';
 import { useDispatch } from 'react-redux';
 import { lookMovies } from '../../../actions';
+import { useRouter } from 'next/dist/client/router';
 import styles from './Search.module.scss';
 
 const Search = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
 
-  // const { push } = useHistory();
+  const { push } = useRouter();
 
   const handleForm = useCallback(
     (event) => {
       event.preventDefault();
       dispatch(lookMovies(value));
 
-      // push(`/search?Search=${value}`);
+      push(`/search?Search=${value}`);
     },
     [value, dispatch]
   );

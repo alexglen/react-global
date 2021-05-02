@@ -1,11 +1,11 @@
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem } from 'rc-menu';
 import { useDispatch, useSelector } from 'react-redux';
-import { sortMovies } from '../../redux/actions';
-import { sortingTypes } from '../../types';
-import { sortingSelector } from '../../redux/selectors/sortingSelectors';
+import { sortMovies } from '../../actions';
+import { sortingTypes } from '../../constants';
+import { sortingSelector } from '../../selectors/sortingSelectors';
 import 'rc-dropdown/assets/index.css';
-import './MoviesSorting.module.scss';
+import styles from './MoviesSorting.module.scss';
 
 const MoviesSorting = () => {
   const dispatch = useDispatch();
@@ -25,12 +25,12 @@ const MoviesSorting = () => {
   );
 
   return (
-    <div className='sorting'>
-      <div className='sorting-title'>Sort by</div>
+    <div className={styles.sorting}>
+      <div className={styles.title}>Sort by</div>
       <Dropdown trigger={['click']} overlay={menu} animation='slide-up'>
-        <div className='sorting-type'>
+        <div className={styles.type}>
           <span>{sortingTypes[sorting]}</span>
-          <span className='icon'></span>
+          <span className={styles.icon}></span>
         </div>
       </Dropdown>
     </div>
