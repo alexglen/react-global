@@ -1,4 +1,4 @@
-import { newToOld } from '../constants';
+import { newToOld } from '../../constants';
 import { APPLY_SORTING } from '../types';
 
 const initialState = {

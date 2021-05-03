@@ -15,7 +15,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
       className={styles.movie}
       onMouseEnter={() => setIsMovieCardWithHover(true)}
       onMouseLeave={() => setIsMovieCardWithHover(false)}>
-      <Link href={`/movies/${encodeURIComponent(id)}`} id='1'>
+      <Link href={`/movies/[id]`} as={`/movies/${encodeURIComponent(id)}`}>
         <div className={styles.img}>
           <img src={img} alt={title} />
         </div>

@@ -1,8 +1,8 @@
 import { getGenres } from '../../utils/getGenres';
 import { useDispatch, useSelector } from 'react-redux';
-import { moviesSelector } from '../../selectors/moviesSelectors';
-import { filterSelector } from '../../selectors/filterSelectors';
-import { filteredMovies } from '../../actions';
+import { moviesSelector } from '../../redux/selectors/moviesSelectors';
+import { filterSelector } from '../../redux/selectors/filterSelectors';
+import { filteredMovies } from '../../redux/actions';
 import styles from './MovieFilters.module.scss';
 
 const MovieFilters = () => {

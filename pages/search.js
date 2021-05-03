@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import Home from '../components/Home/Home';
 import MainHeader from '../components/MainHeader/MainHeader';
 import Head from 'next/head';
-import { fetchMovies } from '../actions';
+import { searchMovies } from '../actions';
 import { FETCH_DATA_SUCCESS } from '../redux/types';
 
-const App = ({ movies }) => {
+const SearchPage = ({ movies }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: FETCH_DATA_SUCCESS, payload: movies });
@@ -14,7 +14,7 @@ const App = ({ movies }) => {
   return (
     <>
       <Head>
-        <title>Main Page</title>
+        <title>Search</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <MainHeader />
@@ -23,8 +23,9 @@ const App = ({ movies }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const movies = await fetchMovies();
+export const getServerSideProps = async ({ query }) => {
+  const movies = await searchMovies(query.Search);
+
   return {
     props: {
       movies,
@@ -32,4 +33,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default App;
+export default SearchPage;

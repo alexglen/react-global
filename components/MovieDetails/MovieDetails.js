@@ -1,20 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { resetedState } from '../../constants';
-import { moviesSelector } from '../../selectors/moviesSelectors';
-
 import styles from './MovieDetails.module.scss';
 
-const MovieDetails = ({ id }) => {
+const MovieDetails = ({ movie }) => {
   const [detailsMovie, setDetailsMovie] = useState(resetedState);
-  const movies = useSelector(moviesSelector);
 
   useEffect(() => {
-    const movie = movies.find((movie) => movie.id === id);
     if (movie) {
       setDetailsMovie({ ...movie });
     }
-  }, [movies, id]);
+  }, [movie]);
 
   return (
     <article className={styles.container}>
@@ -30,7 +25,7 @@ const MovieDetails = ({ id }) => {
 
           <div className={styles.extra}>
             <div className={styles.duration}>
-              <p className={styles.year}>{detailsMovie.releaseDate}</p>
+              <p className={styles.year}>{new Date(detailsMovie.releaseDate).getFullYear()}</p>
               <p className={styles.duration}>{detailsMovie.duration} min</p>
             </div>
             <p className={styles.description}>{detailsMovie.description}</p>

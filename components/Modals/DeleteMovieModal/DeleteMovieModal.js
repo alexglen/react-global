@@ -1,8 +1,11 @@
 import Modal from 'react-modal';
 import Button from '../../UI-kit/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { currentCardIdSelector, deleteModalOpenSelector } from '../../../selectors/modalsSelectors';
-import { closeDeleteModal, deleteMovie } from '../../../actions';
+import {
+  currentCardIdSelector,
+  deleteModalOpenSelector,
+} from '../../../redux/selectors/modalsSelectors';
+import { closeDeleteModal, deleteMovie } from '../../../redux/actions';
 import styles from './DeleteMovieModal.module.scss';
 
 const DeleteMovieModal = () => {

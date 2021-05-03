@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 import Button from '../../UI-kit/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { lookMovies } from '../../../actions';
+import { lookMovies } from '../../../redux/actions';
 import { useRouter } from 'next/dist/client/router';
 import styles from './Search.module.scss';
-import { foundMoviesSelector } from '../../../selectors/moviesSelectors';
+import { foundMoviesSelector } from '../../../redux/selectors/moviesSelectors';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -20,10 +20,9 @@ const Search = () => {
       dispatch(lookMovies(value));
       if (!movies.length) {
         push('/empty');
+      } else {
+        push(`/search?Search=${value}`);
       }
-
-      //
-      //push(`/search?Search=${value}`);
     },
     [value, dispatch]
   );

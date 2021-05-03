@@ -1,9 +1,9 @@
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem } from 'rc-menu';
 import { useDispatch, useSelector } from 'react-redux';
-import { sortMovies } from '../../actions';
+import { sortMovies } from '../../redux/actions';
 import { sortingTypes } from '../../constants';
-import { sortingSelector } from '../../selectors/sortingSelectors';
+import { sortingSelector } from '../../redux/selectors/sortingSelectors';
 import 'rc-dropdown/assets/index.css';
 import styles from './MoviesSorting.module.scss';
 

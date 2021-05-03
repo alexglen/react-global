@@ -8,5 +8,7 @@ export const loadingMoviesSelector = createSelector(getMovies, (movies) => movie
 
 export const foundMoviesSelector = (value) =>
   createSelector(getMovies, ({ movies }) =>
-    movies.filter(({ title }) => title?.toLowerCase().includes(value?.toLowerCase()))
+    value.trim()
+      ? movies.filter(({ title }) => title?.toLowerCase().includes(value?.toLowerCase()))
+      : movies
   );

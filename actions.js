@@ -1,107 +1,53 @@
-import { fetchMovies, updateMovie, removeMovie, postMovie, searchMovies } from './fetch';
-import {
-  ADD_NEW_MOVIE,
-  APPLY_FILTER,
-  APPLY_SORTING,
-  CLOSE_CARD_MODAL,
-  CLOSE_DELETE_MODAL,
-  DELETE_MOVIE,
-  EDIT_MOVIE,
-  FETCH_DATA_ERROR,
-  FETCH_DATA_START,
-  FETCH_DATA_SUCCESS,
-  OPEN_CARD_MODAL,
-  OPEN_DELETE_MODAL,
-  SET_CURRENT_CARD_ID,
-  SET_TYPE_EVENT,
-} from './types';
+const baseURL = 'https://netflix-fbbe6-default-rtdb.firebaseio.com/';
+const headers = { 'Content-Type': 'application/json;charset=utf-8' };
 
-export const getMovies = () => {
-  return async (dispatch) => {
-    dispatch({
-      type: FETCH_DATA_START,
-    });
-    fetchMovies()
-      .then((body) => {
-        dispatch({
-          type: FETCH_DATA_SUCCESS,
-          payload: body,
-        });
-      })
-      .catch((e) => {
-        dispatch({
-          type: FETCH_DATA_ERROR,
-          payload: e,
-        });
-      });
-  };
+const changeDataFormat = (body) => Object.keys(body).map((id) => ({ id, ...body[id] }));
+
+export const fetchMovies = async () => {
+  const res = await fetch(`${baseURL}movies.json`);
+  if (res.ok) {
+    const body = await res.json();
+    return changeDataFormat(body);
+  }
 };
 
-export const lookMovies = (search) => {
-  return async (dispatch) => {
-    searchMovies(search)
-      .then((body) => {
-        dispatch({
-          type: FETCH_DATA_SUCCESS,
-          payload: body,
-        });
-      })
-      .catch((e) => {
-        dispatch({
-          type: FETCH_DATA_ERROR,
-          payload: e,
-        });
-      });
-  };
+export const fetchMovie = async (id) => {
+  const res = await fetch(`${baseURL}movies/${id}.json`);
+  if (res.ok) {
+    return await res.json();
+  }
 };
 
-export const addNewMovie = (data) => {
-  return async (dispatch) => {
-    postMovie(data)
-      .then((res) => res.json())
-      .then(({ name: id }) => {
-        dispatch({
-          type: ADD_NEW_MOVIE,
-          payload: { id, ...data },
-        });
-      });
-  };
+export const searchMovies = async (search) => {
+  const res = await fetch(`${baseURL}movies.json`);
+  if (res.ok) {
+    const body = await res.json();
+    const movies = changeDataFormat(body);
+    return search.trim()
+      ? movies.filter(({ title }) => title?.toLowerCase().includes(search?.toLowerCase()))
+      : movies;
+  }
 };
 
-export const editMovie = (data, id) => {
-  return async (dispatch) => {
-    updateMovie(data, id)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: EDIT_MOVIE,
-          payload: {
-            data,
-            id,
-          },
-        });
-      });
-  };
+export const postMovie = async (data) => {
+  return await fetch(`${baseURL}movies.json`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data),
+  });
 };
 
-export const deleteMovie = (id) => {
-  return async (dispatch) => {
-    removeMovie(id).then(() => {
-      dispatch({
-        type: DELETE_MOVIE,
-        payload: id,
-      });
-    });
-  };
+export const updateMovie = async (data, id) => {
+  return await fetch(`${baseURL}movies/${id}.json`, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify(data),
+  });
 };
 
-export const filteredMovies = (filter) => ({ type: APPLY_FILTER, filter });
-export const sortMovies = (typeOfSorting) => ({ type: APPLY_SORTING, typeOfSorting });
-
-export const openDeleteModal = () => ({ type: OPEN_DELETE_MODAL });
-export const closeDeleteModal = () => ({ type: CLOSE_DELETE_MODAL });
-export const openCardModal = () => ({ type: OPEN_CARD_MODAL });
-export const closeCardModal = () => ({ type: CLOSE_CARD_MODAL });
-
-export const setCurrentCardId = (id) => ({ type: SET_CURRENT_CARD_ID, payload: id });
-export const setTypeEvent = (id) => ({ type: SET_TYPE_EVENT, payload: id });
+export const removeMovie = async (id) => {
+  return await fetch(`${baseURL}movies/${id}.json`, {
+    method: 'DELETE',
+    headers,
+  });
+};

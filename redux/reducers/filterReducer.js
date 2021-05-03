@@ -1,4 +1,4 @@
-import { allMovies } from '../constants';
+import { allMovies } from '../../constants';
 import { APPLY_FILTER } from '../types';
 
 const initialState = {

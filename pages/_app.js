@@ -1,5 +1,5 @@
 import ErrorBoundry from '../components/ErrorBoundry/ErrorBoundry';
-import { wrapper } from '../store';
+import { wrapper } from '../redux/store';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';

@@ -13,8 +13,8 @@ import {
   cardModalOpenSelector,
   currentCardIdSelector,
   typeEventSelector,
-} from '../../../selectors/modalsSelectors';
-import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from '../../../actions';
+} from '../../../redux/selectors/modalsSelectors';
+import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from '../../../redux/actions';
 import styles from './CardMovieModal.module.scss';
 
 const CardMovieModal = () => {

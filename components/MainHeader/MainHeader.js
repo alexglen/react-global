@@ -2,9 +2,9 @@ import Logo from '../Logo/Logo';
 import Search from './Search/Search';
 import { typeAdd } from '../../constants';
 import { useDispatch } from 'react-redux';
-import { openCardModal, setTypeEvent } from '../../actions';
-import styles from './MainHeader.module.scss';
+import { openCardModal, setTypeEvent } from '../../redux/actions';
 import Link from 'next/link';
+import styles from './MainHeader.module.scss';
 
 const MainHeader = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,9 @@ const MainHeader = () => {
     <div className={styles.header}>
       <div className={styles.subheader}>
         <Link href={'/'}>
-          <Logo />
+          <div>
+            <Logo />
+          </div>
         </Link>
 
         <div className={styles.button}>

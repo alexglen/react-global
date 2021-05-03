@@ -5,13 +5,13 @@ import { useSelector } from 'react-redux';
 import { getFilteredMovies } from '../../utils/getFilteredMovies';
 import { getSortedMovies } from '../../utils/getSortedMovies';
 
-import { filterSelector } from '../../selectors/filterSelectors';
-import { sortingSelector } from '../../selectors/sortingSelectors';
+import { filterSelector } from '../../redux/selectors/filterSelectors';
+import { sortingSelector } from '../../redux/selectors/sortingSelectors';
 import {
   errorMoviesSelector,
   loadingMoviesSelector,
   moviesSelector,
-} from '../../selectors/moviesSelectors';
+} from '../../redux/selectors/moviesSelectors';
 
 const MoviesContainer = () => {
   const movies = useSelector(moviesSelector);

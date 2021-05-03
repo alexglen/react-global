@@ -11,9 +11,7 @@ const MoviesList = ({ movies }) => {
             <MovieCard {...movie} key={movie.id} />
           ))}
         </div>
-      ) : (
-        <h2 className={styles.empty}>No Movies Found</h2>
-      )}
+      ) : null}
     </>
   );
 };

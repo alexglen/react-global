@@ -6,7 +6,7 @@ import {
   openDeleteModal,
   setCurrentCardId,
   setTypeEvent,
-} from '../../../../actions';
+} from '../../../../redux/actions';
 import styles from './MenuMovieCard.module.scss';
 
 const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => {
