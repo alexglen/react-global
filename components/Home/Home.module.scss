@@ -1,0 +1,20 @@
+@import '../colors';
+
+.container {
+  background-color: $backgroundColor;
+  color: $primaryColor;
+
+  .main {
+    min-height: calc(100vh - 269px);
+    width: 90%;
+    margin: 0 auto;
+
+    .filters {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .footer {
+    height: 40px;
+  }
+}

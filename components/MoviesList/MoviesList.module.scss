@@ -1,0 +1,22 @@
+@import '../colors';
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  color: $secondaryColor;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
