@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import MenuMovieCard from "./MenuMovieCard";
 import { Link } from "react-router-dom";
-import MenuMovieCard from "./MenuMovieCard/MenuMovieCard";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import "./MovieCard.scss";
 
-const MovieCard = ({ img, title, releaseDate, genre, id }) => {
+function MovieCard({ img, title, releaseDate, genre, id }) {
   const [isMovieCardWithHover, setIsMovieCardWithHover] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
@@ -40,7 +40,7 @@ const MovieCard = ({ img, title, releaseDate, genre, id }) => {
       <MenuMovieCard isMenuModalOpen={isMenuModalOpen} setIsMenuModalOpen={setIsMenuModalOpen} movieCardId={id} />
     </article>
   );
-};
+}
 
 MovieCard.propTypes = {
   img: PropTypes.string,

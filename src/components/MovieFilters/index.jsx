@@ -1,12 +1,12 @@
 import React from "react";
-import { getGenres } from "../../utils/getGenres";
 import { useDispatch, useSelector } from "react-redux";
 import { filteredMovies } from "../../redux/actions";
 import { moviesSelector } from "../../redux/selectors/moviesSelectors";
 import { filterSelector } from "../../redux/selectors/filterSelectors";
+import { getGenres } from "../../utils/getGenres";
 import "./MovieFilters.scss";
 
-const MovieFilters = () => {
+function MovieFilters() {
   const movies = useSelector(moviesSelector);
   const filter = useSelector(filterSelector);
   const dispatch = useDispatch();
@@ -22,6 +22,6 @@ const MovieFilters = () => {
       ))}
     </ul>
   );
-};
+}
 
 export default MovieFilters;

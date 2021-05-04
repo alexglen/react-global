@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import { resetedState } from "../../constants";
 import { moviesSelector } from "../../redux/selectors/moviesSelectors";
+import { resetedState } from "../../constants";
 import "./MovieDetails.scss";
 
-const MovieDetails = () => {
+function MovieDetails() {
   const { id } = useLocation();
 
   const [detailsMovie, setDetailsMovie] = useState(resetedState);
@@ -44,6 +44,6 @@ const MovieDetails = () => {
       </div>
     </article>
   );
-};
+}
 
 export default MovieDetails;

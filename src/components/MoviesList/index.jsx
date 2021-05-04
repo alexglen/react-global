@@ -1,23 +1,24 @@
 import React from "react";
-import MovieCard from "./MovieCard/MovieCard";
+import MovieCard from "./MovieCard";
 import PropTypes from "prop-types";
 import "./MoviesList.scss";
 
-const MoviesList = ({ movies }) => {
+function MoviesList({ movies }) {
   return (
     <>
       {movies.length ? (
         <div className="movies-list">
-          {movies.map((movie) => (
-            <MovieCard {...movie} key={movie.id} />
-          ))}
+          {movies.map((movie) => {
+            const { img, title, releaseDate, genre, id } = movie;
+            return <MovieCard img={img} title={title} releaseDate={releaseDate} genre={genre} id={id} key={movie.id} />;
+          })}
         </div>
       ) : (
         <h2 className="empty-list">No Movies Found</h2>
       )}
     </>
   );
-};
+}
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(

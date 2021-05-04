@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react";
-import Button from "../../UI-kit/Button/Button";
-import { useDispatch } from "react-redux";
+import Button from "../../UI-kit/Button";
 import { lookMovies } from "../../../redux/actions";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import "./Search.scss";
 
-const Search = () => {
+function Search() {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
@@ -34,6 +34,6 @@ const Search = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Search;

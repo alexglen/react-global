@@ -1,9 +1,9 @@
 import React from "react";
+import Button from "../UI-kit/Button";
 import { useHistory } from "react-router";
-import Button from "../UI-kit/Button/Button";
 import "./Error404.scss";
 
-const Error404 = () => {
+function Error404() {
   const { push } = useHistory();
   return (
     <main className="error-main">
@@ -21,6 +21,6 @@ const Error404 = () => {
       </div>
     </main>
   );
-};
+}
 
 export default Error404;

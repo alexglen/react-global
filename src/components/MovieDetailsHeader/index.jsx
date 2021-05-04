@@ -1,10 +1,10 @@
 import React from "react";
+import Logo from "../Logo";
 import { NavLink } from "react-router-dom";
-import Logo from "../Logo/Logo";
 import search from "./search-icon.png";
 import "./MovieDetailsHeader.scss";
 
-const MovieDetailsHeader = () => {
+function MovieDetailsHeader() {
   return (
     <header className="movie-header container">
       <NavLink to="/">
@@ -15,6 +15,6 @@ const MovieDetailsHeader = () => {
       </NavLink>
     </header>
   );
-};
+}
 
 export default MovieDetailsHeader;

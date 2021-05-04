@@ -1,9 +1,9 @@
 import React from "react";
+import Button from "../UI-kit/Button";
 import { useHistory } from "react-router";
-import Button from "../UI-kit/Button/Button";
 import "./EmptyMoviesList.scss";
 
-const EmptyMoviesList = () => {
+function EmptyMoviesList() {
   const { push } = useHistory();
   return (
     <div className="empty-movies">
@@ -19,6 +19,6 @@ const EmptyMoviesList = () => {
       </div>
     </div>
   );
-};
+}
 
 export default EmptyMoviesList;

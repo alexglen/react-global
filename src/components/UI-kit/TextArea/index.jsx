@@ -1,7 +1,7 @@
 import React from "react";
 import "./TextArea.scss";
 
-const TextArea = ({ placeholder, title, type, value, onChange, name }) => {
+function TextArea({ placeholder, title, type, value, onChange, name }) {
   return (
     <div className="textarea-component">
       <label>
@@ -10,6 +10,6 @@ const TextArea = ({ placeholder, title, type, value, onChange, name }) => {
       </label>
     </div>
   );
-};
+}
 
 export default TextArea;

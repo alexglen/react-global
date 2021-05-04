@@ -1,10 +1,9 @@
 import React, { useCallback } from "react";
 import Modal from "react-modal";
-import Button from "../../UI-kit/Button/Button";
-import Input from "../../UI-kit/Input/Input";
-import Select from "../../UI-kit/Select/Select";
-import TextArea from "../../UI-kit/TextArea/TextArea";
-import { genres, typeAdd, typeEdit } from "../../../constants";
+import Button from "../../UI-kit/Button";
+import Input from "../../UI-kit/Input";
+import Select from "../../UI-kit/Select";
+import TextArea from "../../UI-kit/TextArea";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from "../../../redux/actions";
 import {
@@ -15,10 +14,12 @@ import {
 } from "../../../redux/selectors/modalsSelectors";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { genres, typeAdd, typeEdit } from "../../../constants";
 import "./CardMovieModal.scss";
 
-const CardMovieModal = () => {
+function CardMovieModal() {
   const dispatch = useDispatch();
+
   const activeCard = useSelector(activeCardSelector);
   const isCardModalOpen = useSelector(cardModalOpenSelector);
   const currentCardId = useSelector(currentCardIdSelector);
@@ -147,6 +148,6 @@ const CardMovieModal = () => {
       </>
     </Modal>
   );
-};
+}
 
 export default CardMovieModal;

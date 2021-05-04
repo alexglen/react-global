@@ -1,13 +1,13 @@
 import React from "react";
-import Logo from "../Logo/Logo";
-import Search from "./Search/Search";
-import { typeAdd } from "./../../constants";
-import { useDispatch } from "react-redux";
+import Logo from "../Logo";
+import Search from "./Search";
 import { openCardModal, setTypeEvent } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { typeAdd } from "../../constants";
 import "./MainHeader.scss";
 
-const MainHeader = () => {
+function MainHeader() {
   const dispatch = useDispatch();
 
   const openAddMovieModal = () => {
@@ -29,6 +29,6 @@ const MainHeader = () => {
       <Search />
     </div>
   );
-};
+}
 
 export default MainHeader;

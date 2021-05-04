@@ -1,7 +1,7 @@
 import React from "react";
 import "./Select.scss";
 
-const Select = ({ title, options, name, value, onChange }) => {
+function Select({ title, options, name, value, onChange }) {
   return (
     <div className="select-component">
       <label>
@@ -16,6 +16,6 @@ const Select = ({ title, options, name, value, onChange }) => {
       </label>
     </div>
   );
-};
+}
 
 export default Select;

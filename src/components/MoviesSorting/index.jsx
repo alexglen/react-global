@@ -8,7 +8,7 @@ import { sortingSelector } from "../../redux/selectors/sortingSelectors";
 import "rc-dropdown/assets/index.css";
 import "./MoviesSorting.scss";
 
-const MoviesSorting = () => {
+function MoviesSorting() {
   const dispatch = useDispatch();
 
   const sorting = useSelector(sortingSelector);
@@ -36,6 +36,6 @@ const MoviesSorting = () => {
       </Dropdown>
     </div>
   );
-};
+}
 
 export default MoviesSorting;

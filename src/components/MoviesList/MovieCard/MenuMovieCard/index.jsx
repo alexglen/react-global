@@ -1,11 +1,11 @@
 import React from "react";
-import { typeEdit } from "../../../../constants";
-import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { openCardModal, openDeleteModal, setCurrentCardId, setTypeEvent } from "../../../../redux/actions";
+import { typeEdit } from "../../../../constants";
+import PropTypes from "prop-types";
 import "./MenuMovieCard.scss";
 
-const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => {
+function MenuMovieCard({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) {
   const dispatch = useDispatch();
 
   const editMovie = () => {
@@ -37,7 +37,7 @@ const MenuMovieCard = ({ isMenuModalOpen, setIsMenuModalOpen, movieCardId }) => 
   );
 
   return menu;
-};
+}
 
 MenuMovieCard.propTypes = {
   isMenuModalOpen: PropTypes.bool,

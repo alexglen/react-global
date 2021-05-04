@@ -1,17 +1,18 @@
 import React, { lazy, Suspense } from "react";
+import Error404 from "../components/Error404";
+import Spinner from "../components/Spinner";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router";
-import Spinner from "../components/Spinner/Spinner";
 import { moviesSelector } from "../redux/selectors/moviesSelectors";
-import Error404 from "../components/Error404/Error404";
 
 const HomePage = lazy(() => import("./HomePage"));
 const MoviePage = lazy(() => import("./MoviePage"));
 const EmptyMoviesListPage = lazy(() => import("./EmptyMoviesListPage"));
 
-const Pages = () => {
+function Pages() {
   const movies = useSelector(moviesSelector);
   const isMoviesEmpty = !movies?.length;
+
   return (
     <Suspense fallback={<Spinner />}>
       <Switch>
@@ -22,6 +23,6 @@ const Pages = () => {
       </Switch>
     </Suspense>
   );
-};
+}
 
 export default Pages;

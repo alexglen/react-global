@@ -1,7 +1,7 @@
 import React from "react";
 import "./Input.scss";
 
-const Input = ({ placeholder, title, type, value, onChange, name }) => {
+function Input({ placeholder, title, type, value, onChange, name }) {
   return (
     <div className="input-component">
       <label>
@@ -10,6 +10,6 @@ const Input = ({ placeholder, title, type, value, onChange, name }) => {
       </label>
     </div>
   );
-};
+}
 
 export default Input;

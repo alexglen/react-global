@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import "./Button.scss";
 
-const Button = ({ children, color, onClick, type }) => {
+function Button({ children, color, onClick, type }) {
   const buttonClass = classnames("button", {
     "button-primary": color === "primary",
     "button-secondary": color === "secondary",
@@ -13,6 +13,6 @@ const Button = ({ children, color, onClick, type }) => {
       {children}
     </button>
   );
-};
+}
 
 export default Button;

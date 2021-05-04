@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import MoviesList from "../MoviesList/MoviesList";
-import MoviesStatistic from "../MoviesStatistic/MoviesStatistic";
-import Spinner from "../Spinner/Spinner";
+import MoviesList from "../MoviesList";
+import MoviesStatistic from "../MoviesStatistic";
+import Spinner from "../Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovies } from "../../redux/actions";
 import { getFilteredMovies } from "../../utils/getFilteredMovies";
@@ -10,8 +10,9 @@ import { errorMoviesSelector, loadingMoviesSelector, moviesSelector } from "../.
 import { filterSelector } from "../../redux/selectors/filterSelectors";
 import { sortingSelector } from "../../redux/selectors/sortingSelectors";
 
-const MoviesContainer = () => {
+function MoviesContainer() {
   const dispatch = useDispatch();
+
   const movies = useSelector(moviesSelector);
   const error = useSelector(errorMoviesSelector);
   const isLoading = useSelector(loadingMoviesSelector);
@@ -33,11 +34,12 @@ const MoviesContainer = () => {
   if (error) {
     return <h2 className="error">{error}</h2>;
   }
+
   return (
     <>
       <MoviesStatistic moviesNumber={moviesAfterSorting.length} />
       <MoviesList movies={moviesAfterSorting} />
     </>
   );
-};
+}
 export default MoviesContainer;

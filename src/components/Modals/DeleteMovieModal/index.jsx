@@ -1,13 +1,13 @@
 import React from "react";
 import Modal from "react-modal";
-import Button from "../../UI-kit/Button/Button";
+import Button from "../../UI-kit/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDeleteModal, deleteMovie } from "../../../redux/actions";
 import { useHistory } from "react-router";
 import { currentCardIdSelector, deleteModalOpenSelector } from "../../../redux/selectors/modalsSelectors";
 import "./DeleteMovieModal.scss";
 
-const DeleteMovieModal = () => {
+function DeleteMovieModal() {
   const isDeleteModalOpen = useSelector(deleteModalOpenSelector);
   const currentCardId = useSelector(currentCardIdSelector);
 
@@ -39,6 +39,6 @@ const DeleteMovieModal = () => {
       </>
     </Modal>
   );
-};
+}
 
 export default DeleteMovieModal;
