@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import Button from "../../UI-kit/Button";
+import { Button } from "../../../stories/Button";
 import { lookMovies } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";

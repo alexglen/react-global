@@ -1,10 +1,10 @@
-@import "../../colors";
+@import "../../components/colors";
 
-.input-component {
+.input {
   margin: 7px 0;
   input {
-    height: 32px;
     border-radius: 5px;
+    height: 32px;
     background-color: $inputBackgroundColor;
     color: $primaryColor;
     width: 100%;
@@ -29,4 +29,16 @@
       display: inline-block;
     }
   }
+}
+
+.small input {
+  height: 24px;
+}
+
+.medium input {
+  height: 32px;
+}
+
+.large input {
+  height: 40px;
 }

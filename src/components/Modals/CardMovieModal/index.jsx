@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import Modal from "react-modal";
-import Button from "../../UI-kit/Button";
-import Input from "../../UI-kit/Input";
-import Select from "../../UI-kit/Select";
-import TextArea from "../../UI-kit/TextArea";
+import { Button } from "../../../stories/Button";
+import { Input } from "../../../stories/Input";
+import { Select } from "../../../stories/Select";
+import { TextArea } from "../../../stories/TextArea";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewMovie, closeCardModal, editMovie, setTypeEvent } from "../../../redux/actions";
 import {
@@ -127,6 +127,7 @@ function CardMovieModal() {
               name="description"
               value={values.description}
               onChange={handleChange}
+              rows={4}
             />
             {touched.description && errors.description && <p className="error">{errors.description}</p>}
             <div className="buttons">

@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../UI-kit/Button";
 import { useHistory } from "react-router";
+import { Button } from "../../stories/Button";
 import "./EmptyMoviesList.scss";
 
 function EmptyMoviesList() {

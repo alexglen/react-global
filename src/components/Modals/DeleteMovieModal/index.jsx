@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import Button from "../../UI-kit/Button";
+import { Button } from "../../../stories/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDeleteModal, deleteMovie } from "../../../redux/actions";
 import { useHistory } from "react-router";
