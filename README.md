@@ -12,4 +12,6 @@ Main components used in pages `/components`
 
 Test runner - Jest
 
-<!-- Configuration for Jest - `jest.config.js` -->
+## Storybook
+
+npm run storybook

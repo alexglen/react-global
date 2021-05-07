@@ -10,7 +10,6 @@
     "@trendmicro/react-dropdown": "^1.4.0",
     "classnames": "^2.2.6",
     "formik": "^2.2.6",
-    "getstorybook": "^1.7.0",
     "jest": "^26.6.0",
     "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",

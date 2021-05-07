@@ -12,12 +12,12 @@ export const Primary = Template.bind({});
 Primary.args = {
   children: "Primary button",
   color: "primary",
-  onClick: () => {},
+  onClick: () => alert("primary"),
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  children: "secondary button",
+  children: "Secondary button",
   color: "secondary",
-  onClick: () => {},
+  onClick: () => alert("secondary"),
 };
